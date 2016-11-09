@@ -52,9 +52,19 @@ const settings = {
 
 |    Property    | Type |          Description          | Done |
 | -------------  | ---- |          -----------          | ------- |
+|urls|array|use array of url|Done|
 |auto_play|boolean||Done|
 |use_arrow|boolean||Done|
 |use_thumbs|boolean||Done|
 |lazy_load|boolean||Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|Done|
-|options|object||Done|
+|options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }|Done|
+|start_actionID|int||Not|
+
+# EVENT SETTINGS
+|    Property    | Type |          Description          | Done |
+| -------------  | ---- |          -----------          | ------- |
+|beforeWrapperMouseOver|function|callback before when wrapper mouse over event call|Done|
+|afterWrapperMouseOver|function|callback after when wrapper mouse over event call|Done|
+|beforeWrapperMouseLeave|function|callback before wrapper mouse leave event call|Done|
+|afterWrapperMouseLeave|function|callback after wrapper mouse leave event call|Done|
