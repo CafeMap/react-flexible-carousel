@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { isReactElement } from '../../util/validateType'
 
 class ArrowLeft extends Component {
   constructor(props) {
@@ -28,13 +29,15 @@ class ArrowLeft extends Component {
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
     if (this.props.useLeftArrow) {
-      const cloneProps = {
-        style: _left_arrow_style,
-        onClick: this.props.handleArrowLeft,
-        onMouseOver: this.handleArrowMouseOver.bind(this),
-        onMouseLeave: this.handleArrowMouseLeave.bind(this)
+      if (isReactElement(this.props.useLeftArrow, 'useLeftArrow')) {
+        const cloneProps = {
+          style: _left_arrow_style,
+          onClick: this.props.handleArrowLeft,
+          onMouseOver: this.handleArrowMouseOver.bind(this),
+          onMouseLeave: this.handleArrowMouseLeave.bind(this)
+        }
+        return React.cloneElement(this.props.useLeftArrow, cloneProps)
       }
-      return React.cloneElement(this.props.useLeftArrow, cloneProps)
     }
     return (
       <div
@@ -75,13 +78,15 @@ class ArrowRight extends Component {
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
     if (this.props.useRightArrow) {
-      const cloneProps = {
-        style: _right_arrow_style,
-        onClick: this.props.handleArrowRight,
-        onMouseOver: this.handleArrowMouseOver.bind(this),
-        onMouseLeave: this.handleArrowMouseLeave.bind(this)
+      if (isReactElement(this.props.useRightArrow, 'useRightArrow')) {
+        const cloneProps = {
+          style: _right_arrow_style,
+          onClick: this.props.handleArrowRight,
+          onMouseOver: this.handleArrowMouseOver.bind(this),
+          onMouseLeave: this.handleArrowMouseLeave.bind(this)
+        }
+        return React.cloneElement(this.props.useRightArrow, cloneProps)
       }
-      return React.cloneElement(this.props.useRightArrow, cloneProps)
     }
     return (
       <div
