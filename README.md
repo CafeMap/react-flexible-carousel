@@ -11,8 +11,8 @@ const settings = {
   use_thumbs={ true }
   lazy_load={ true }
   styleEase='ease-in-out'
-  useLeftArrow={<div>Left</div>}
-  useRightArrow={<div>Right</div>}
+  use_left_arrow={<div>Left</div>}
+  use_right_arrow={<div>Right</div>}
   options={ {
     listWidth: 300,
     listHeight: 400,
