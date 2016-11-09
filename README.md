@@ -1,6 +1,24 @@
 # React Flexible Carousel [ In progress ]
 ⭐️  Flexible image carousel and respond on any device 💻  🖥  👀￼￼￼￼￼
 
+# ~~USE [ In progress ]~~
+
+```javascript
+const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150']
+const settings = {
+  auto_play={ true }
+  use_arrow={ true }
+  use_thumbs={ true }
+  lazy_load={ true }
+  styleEase='ease-in-out'
+  options={ {
+    listWidth: 300,
+    listHeight: 400,
+    auto_play_speed: 2000
+  } }  
+}
+<Carousel urls={ urls } { ...settings } />
+```
 
 # PROGRESS
 
