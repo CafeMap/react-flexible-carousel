@@ -61,8 +61,8 @@ const settings = {
 |urls|array|use array of url|Done|
 |auto_play|boolean||Done|
 |use_arrow|boolean||Done|
-|useLeftArrow|ReactElement|custom left arrow ReactElement|Done|
-|useRightArrow|ReactElement|custom right arrow ReactElement|Done|
+|use_left_arrow|ReactElement|custom left arrow ReactElement|Done|
+|use_right_arrow|ReactElement|custom right arrow ReactElement|Done|
 |use_thumbs|boolean||Done|
 |lazy_load|boolean||Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|Done|
