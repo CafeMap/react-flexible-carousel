@@ -4,8 +4,10 @@
 # ~~USE~~ [ Not Release ]
 
 ```javascript
-const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150']
-const settings = {
+const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'http://placehold.it/350x250', 'http://placehold.it/350x300']
+
+<Carousel
+  urls={ urls }
   auto_play={ true }
   use_arrow={ true }
   use_thumbs={ true }
@@ -23,9 +25,7 @@ const settings = {
   beforeWrapperMouseLeave={ (index, url) => console.log(index, url) }
   afterWrapperMouseLeave={ (index, url) => console.log(index, url) }
   beforeActionIDChange={ (preId) => console.log(preId) }
-  afterActionIDChange={ (nextId) => console.log(nextId) }
-}
-<Carousel urls={ urls } { ...settings } />
+  afterActionIDChange={ (nextId) => console.log(nextId) } />
 ```
 
 # PROGRESS
