@@ -109,7 +109,7 @@ class Carousel extends Component {
     })
   }
 
-  renderList() {
+  _renderList() {
     const _use_lazy_load = this.props.lazy_load
     return this.props.urls.map((url, idx) => {
       return <List
@@ -161,7 +161,7 @@ class Carousel extends Component {
           styleEase={ this.props.styleEase }
           onWrapperMouseOver={ this._handleWrapperMouseOver.bind(this) }
           onWrapperMouseLeave={ this._handleWrapperMouseLeave.bind(this) }>
-          { this.renderList.call(this) }
+          { this._renderList.call(this) }
         </Wrapper>
         { _render_arrow() }
         { _render_thumbs() }
