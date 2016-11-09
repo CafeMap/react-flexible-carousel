@@ -27,6 +27,15 @@ class ArrowLeft extends Component {
       transition: 'opacity .3s',
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
+    if (this.props.useLeftArrow) {
+      const cloneProps = {
+        style: _left_arrow_style,
+        onClick: this.props.handleArrowLeft,
+        onMouseOver: this.handleArrowMouseOver.bind(this),
+        onMouseLeave: this.handleArrowMouseLeave.bind(this)
+      }
+      return React.cloneElement(this.props.useLeftArrow, cloneProps)
+    }
     return (
       <div
         style={ _left_arrow_style }
@@ -65,13 +74,22 @@ class ArrowRight extends Component {
       transition: 'opacity .3s',
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
+    if (this.props.useRightArrow) {
+      const cloneProps = {
+        style: _right_arrow_style,
+        onClick: this.props.handleArrowRight,
+        onMouseOver: this.handleArrowMouseOver.bind(this),
+        onMouseLeave: this.handleArrowMouseLeave.bind(this)
+      }
+      return React.cloneElement(this.props.useRightArrow, cloneProps)
+    }
     return (
       <div
         style={ _right_arrow_style }
         onClick={ this.props.handleArrowRight }
         onMouseOver={ this.handleArrowMouseOver.bind(this) }
         onMouseLeave={ this.handleArrowMouseLeave.bind(this) }
-        ><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></div>
+      ><i className="fa fa-arrow-circle-right" aria-hidden="true"></i></div>
     )
   }
 }

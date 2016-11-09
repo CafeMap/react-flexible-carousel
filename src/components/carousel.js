@@ -131,10 +131,12 @@ class Carousel extends Component {
           [
             <ArrowLeft
               wrapperIsHover={ this.state.wrapperIsHover }
-              handleArrowLeft={ this._handleArrowLeft.bind(this) } />,
+              handleArrowLeft={ this._handleArrowLeft.bind(this) }
+              useLeftArrow={ this.props.useLeftArrow } />,
             <ArrowRight
               wrapperIsHover={ this.state.wrapperIsHover }
-              handleArrowRight={ this._handleArrowRight.bind(this) } />
+              handleArrowRight={ this._handleArrowRight.bind(this) }
+              useRightArrow={ this.props.useRightArrow } />
           ]
         )
       }
