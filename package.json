@@ -1,0 +1,29 @@
+{
+  "name": "cm-react-carousel",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "keywords": [
+    "react",
+    "carousel"
+  ],
+  "author": "Whien_Liou <sal95610@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "webpack": "beta"
+  },
+  "peerDependencies": {
+    "react": ">=0.14.0"
+  }
+}
