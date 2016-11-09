@@ -18,12 +18,12 @@ const settings = {
     listHeight: 400,
     auto_play_speed: 2000
   } }
-  beforeWrapperMouseOver={(index, url) => console.log(index, url)}
-  afterWrapperMouseOver={(index, url) => console.log(index, url)}
-  beforeWrapperMouseLeave={(index, url) => console.log(index, url)}
-  afterWrapperMouseLeave={(index, url) => console.log(index, url)}
-  beforeActionIDChange={ (preId) => {console.log(preId)} }
-  afterActionIDChange={ (nextId) => {console.log(nextId)} }
+  beforeWrapperMouseOver={ (index, url) => console.log(index, url) }
+  afterWrapperMouseOver={ (index, url) => console.log(index, url) }
+  beforeWrapperMouseLeave={ (index, url) => console.log(index, url) }
+  afterWrapperMouseLeave={ (index, url) => console.log(index, url) }
+  beforeActionIDChange={ (preId) => console.log(preId) }
+  afterActionIDChange={ (nextId) => console.log(nextId) }
 }
 <Carousel urls={ urls } { ...settings } />
 ```
