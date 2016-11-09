@@ -58,6 +58,3 @@ const settings = {
 |lazy_load|boolean||Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|Done|
 |options|object||Done|
-
-# License
-MIT
