@@ -22,6 +22,8 @@ const settings = {
   afterWrapperMouseOver={(index, url) => console.log(index, url)}
   beforeWrapperMouseLeave={(index, url) => console.log(index, url)}
   afterWrapperMouseLeave={(index, url) => console.log(index, url)}
+  beforeActionIDChange={ (preId) => {console.log(preId)} }
+  afterActionIDChange={ (nextId) => {console.log(nextId)} }
 }
 <Carousel urls={ urls } { ...settings } />
 ```
