@@ -6,16 +6,17 @@ class List extends Component {
   }
 
   render() {
+    const _list_style = {
+      width: this.props.width,
+      height: this.props.height,
+      float: 'left',
+      backgroundImage: `url(${this.props.url})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+      backgroundSize: 'contain'
+    }
     return (
-      <div style={ {
-        width: this.props.width,
-        height: this.props.height,
-        float: 'left',
-        backgroundImage: `url(${this.props.url})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        backgroundSize: 'contain'
-      } }></div>
+      <div style={ _list_style }></div>
     )
   }
 }

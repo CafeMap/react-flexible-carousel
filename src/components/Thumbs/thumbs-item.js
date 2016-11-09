@@ -6,18 +6,19 @@ class ThumbsItem extends Component {
   }
 
   render() {
+    const _thumbs_item_style = {
+      float: 'left',
+      width: this.props.width,
+      height: 60,
+      backgroundImage: `url(${this.props.url})`,
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+      opacity: this.props.isAction ? 1 : 0.3,
+    }
     return (
       <div
-        style={ {
-          float: 'left',
-          width: this.props.width,
-          height: 60,
-          backgroundImage: `url(${this.props.url})`,
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
-          opacity: this.props.isAction ? 1 : 0.3,
-        } }
+        style={ _thumbs_item_style }
         onClick={ () => this.props.handleChangeThumbsID(this.props.idx) }></div>
     )
   }
