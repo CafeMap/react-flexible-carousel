@@ -34,7 +34,9 @@ class Carousel extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps !== this.props.nextProps
+    return nextProps.urls !== this.props.urls ||
+      nextState.actionID !== this.state.actionID ||
+      nextState.wrapperIsHover !== this.state.wrapperIsHover
   }
 
   _handleAutoPlay() {
