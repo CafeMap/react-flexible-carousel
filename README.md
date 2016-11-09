@@ -64,7 +64,7 @@ const settings = {
 # EVENT SETTINGS
 |    Property    | Type |          Description          | Done |
 | -------------  | ---- |          -----------          | ------- |
-|beforeWrapperMouseOver|function|callback before when wrapper mouse over event call|Done|
-|afterWrapperMouseOver|function|callback after when wrapper mouse over event call|Done|
-|beforeWrapperMouseLeave|function|callback before wrapper mouse leave event call|Done|
-|afterWrapperMouseLeave|function|callback after wrapper mouse leave event call|Done|
+|beforeWrapperMouseOver(actionID, actionUrl)|function|callback before when wrapper mouse over event call|Done|
+|afterWrapperMouseOver(actionID, actionUrl)|function|callback after when wrapper mouse over event call|Done|
+|beforeWrapperMouseLeave(actionID, actionUrl)|function|callback before wrapper mouse leave event call|Done|
+|afterWrapperMouseLeave(actionID, actionUrl)|function|callback after wrapper mouse leave event call|Done|

@@ -53,27 +53,29 @@ class Carousel extends Component {
   }
 
   _handleWrapperMouseOver() {
+    const actionUrl = this.props.urls[this.state.actionID]
     if (this.props.beforeWrapperMouseOver) {
-      this.props.beforeWrapperMouseOver()
+      this.props.beforeWrapperMouseOver(this.state.actionID, actionUrl)
     }
     this.setState({
       wrapperIsHover: true
     }, () => {
       if (this.props.afterWrapperMouseOver) {
-        this.props.afterWrapperMouseOver()
+        this.props.afterWrapperMouseOver(this.state.actionID, actionUrl)
       }
     })
   }
 
   _handleWrapperMouseLeave() {
+    const actionUrl = this.props.urls[this.state.actionID]
     if (this.props.beforeWrapperMouseLeave) {
-      this.props.beforeWrapperMouseLeave()
+      this.props.beforeWrapperMouseLeave(this.state.actionID, actionUrl)
     }
     this.setState({
       wrapperIsHover: false
     }, () => {
       if (this.props.afterWrapperMouseLeave) {
-        this.props.afterWrapperMouseLeave()
+        this.props.afterWrapperMouseLeave(this.state.actionID, actionUrl)
       }
     })
   }
