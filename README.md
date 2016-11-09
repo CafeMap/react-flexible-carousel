@@ -50,7 +50,7 @@ const settings = {
   - [ ] handle before, after bind event
     - [x] handle wrapper mouse over, leave event
     - [ ] handle arrow mouse click
-    - [ ] handle actionID change
+    - [x] handle actionID change
     - [ ] handle thumbs item click
     - [ ] handle thumbs item change
 
