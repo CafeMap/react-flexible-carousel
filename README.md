@@ -76,3 +76,5 @@ const settings = {
 |afterWrapperMouseOver(actionID, actionUrl)|function|callback after when wrapper mouse over event call|Done|
 |beforeWrapperMouseLeave(actionID, actionUrl)|function|callback before wrapper mouse leave event call|Done|
 |afterWrapperMouseLeave(actionID, actionUrl)|function|callback after wrapper mouse leave event call|Done|
+|beforeActionIDChange(preID)|function|callback before actionID change call|Done|
+|afterActionIDChange(nextID)|function|callback after actionID change call|Done|
