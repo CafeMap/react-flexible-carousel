@@ -1,7 +1,7 @@
 # React Flexible Carousel [ In progress ]
 ⭐️  Flexible image carousel and respond on any device 💻  🖥  👀￼￼￼￼￼
 
-# ~~USE [ In progress ]~~
+# ~~USE~~ [ Not Release ]
 
 ```javascript
 const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150']
@@ -47,6 +47,17 @@ const settings = {
     - [ ] handle actionID change
     - [ ] handle thumbs item click
     - [ ] handle thumbs item change
+
+# SETTINGS
+
+|    Property    | Type |          Description          | Done |
+| -------------  | ---- |          -----------          | ------- |
+|auto_play|boolean||Done|
+|use_arrow|boolean||Done|
+|use_thumbs|boolean||Done|
+|lazy_load|boolean||Done|
+|styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|Done|
+|options|object||Done|
 
 # License
 MIT
