@@ -11,11 +11,17 @@ const settings = {
   use_thumbs={ true }
   lazy_load={ true }
   styleEase='ease-in-out'
+  useLeftArrow={<div>Left</div>}
+  useRightArrow={<div>Right</div>}
   options={ {
     listWidth: 300,
     listHeight: 400,
     auto_play_speed: 2000
-  } }  
+  } }
+  beforeWrapperMouseOver={(index, url) => console.log(index, url)}
+  afterWrapperMouseOver={(index, url) => console.log(index, url)}
+  beforeWrapperMouseLeave={(index, url) => console.log(index, url)}
+  afterWrapperMouseLeave={(index, url) => console.log(index, url)}
 }
 <Carousel urls={ urls } { ...settings } />
 ```
@@ -55,6 +61,8 @@ const settings = {
 |urls|array|use array of url|Done|
 |auto_play|boolean||Done|
 |use_arrow|boolean||Done|
+|useLeftArrow|ReactElement|custom left arrow ReactElement|Done|
+|useRightArrow|ReactElement|custom right arrow ReactElement|Done|
 |use_thumbs|boolean||Done|
 |lazy_load|boolean||Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|Done|
