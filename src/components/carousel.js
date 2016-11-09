@@ -91,21 +91,28 @@ class Carousel extends Component {
 
   _handleArrowLeft() {
     if (this.state.actionID - 1 < 0) return
-    this.setState({
-      actionID: this.state.actionID - 1
-    })
+    this._handleChangeThumbsID(this.state.actionID - 1)
   }
 
   _handleArrowRight() {
     if (this.state.actionID + 1 >= this.props.urls.length) return
-    this.setState({
-      actionID: this.state.actionID + 1
-    })
+    this._handleChangeThumbsID(this.state.actionID + 1)
   }
 
   _handleChangeThumbsID(id) {
+    if (this.props.beforeActionIDChange) {
+      if (isFunction(this.props.beforeActionIDChange, 'beforeActionIDChange')) {
+        this.props.beforeActionIDChange(this.state.actionID)
+      }
+    }
     this.setState({
       actionID: id
+    }, () => {
+      if (this.props.afterActionIDChange) {
+        if (isFunction(this.props.afterActionIDChange, 'beforeActionIDChange')) {
+          this.props.afterActionIDChange(this.state.actionID)
+        }
+      }
     })
   }
 
