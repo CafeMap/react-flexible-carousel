@@ -131,7 +131,7 @@ class Carousel extends Component {
 
   render() {
     const _wrapper_style = {
-      position: 'relative'
+      position: 'static'
     }
     const _render_arrow = () => {
       if (this.props.use_arrow) {

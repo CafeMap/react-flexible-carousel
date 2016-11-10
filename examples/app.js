@@ -15,10 +15,13 @@ class App extends Component {
 
   render() {
     const _example_wrapper_style = {
-      width: '80%'
+      position: 'relative',
+      width: 300,
+      height: 200
     }
     return (
       <div
+        id='carousel-wrapper'
         style={ _example_wrapper_style }>
         <Carousel
           urls={ urls }
@@ -26,9 +29,10 @@ class App extends Component {
           use_thumbs={ true }
           lazy_load={ true }
           styleEase='ease-in-out'
-          use_left_arrow={<div>Left</div>}
-          use_right_arrow={<div>Right</div>}
+          use_left_arrow={<div> Left </div>}
+          use_right_arrow={<div> Right </div>}
           options={ {
+            listWidth: 300,
             listHeight: 200
           } }
           beforeWrapperMouseOver={ (index, url) => console.log(index, url) }
