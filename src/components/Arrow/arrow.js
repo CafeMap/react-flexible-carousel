@@ -26,7 +26,7 @@ class ArrowLeft extends Component {
       position: 'absolute',
       top: '50%',
       cursor: 'default',
-      'user-select': 'none',
+      userSelect: 'none',
       transition: 'opacity .3s',
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
@@ -77,7 +77,7 @@ class ArrowRight extends Component {
       position: 'absolute',
       top: '50%',
       cursor: 'default',
-      'user-select': 'none',
+      userSelect: 'none',
       transition: 'opacity .3s',
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
