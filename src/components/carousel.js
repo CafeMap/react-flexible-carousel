@@ -8,6 +8,7 @@ import List from './list'
 import { ArrowLeft, ArrowRight } from './Arrow/arrow'
 
 class Carousel extends Component {
+
   constructor(props) {
     super(props);
 
@@ -122,7 +123,7 @@ class Carousel extends Component {
       return <List
         width={ Math.ceil(this.props.options.listWidth) }
         height={ this.state.options.listHeight }
-        key={ `cm-carousel-list-${url}` }
+        key={ `cm-carousel-list-${url}-${idx}` }
         idx={ idx }
         url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
     })
@@ -137,10 +138,12 @@ class Carousel extends Component {
         return (
           [
             <ArrowLeft
+              key={ `arrow-left` }
               wrapperIsHover={ this.state.wrapperIsHover }
               handleArrowLeft={ this._handleArrowLeft.bind(this) }
               useLeftArrow={ this.props.use_left_arrow } />,
             <ArrowRight
+              key={ `arrow-right` }
               wrapperIsHover={ this.state.wrapperIsHover }
               handleArrowRight={ this._handleArrowRight.bind(this) }
               useRightArrow={ this.props.use_right_arrow } />

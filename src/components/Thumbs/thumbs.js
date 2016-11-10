@@ -11,7 +11,7 @@ class Thumbs extends Component {
       const isAction = idx === this.props.actionID
       return (
         <ThumbsItem
-          key={ `thumbs-item-${url}` }
+          key={ `thumbs-item-${url}-${idx}` }
           isAction={ isAction }
           width={ this.props.listWidth / 5 }
           url={ this.props.actionID >= (idx - 4) ? url : '' }
