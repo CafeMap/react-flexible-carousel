@@ -5,6 +5,14 @@ class ThumbsItem extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    let img = new Image()
+    img.onload = function() {
+      console.log(this.offsetWidth)
+    }
+    img.src = this.item.style.backgroundImage.replace('url(', '').replace(')', '').replace("'", '').replace('"', '').replace('"', '')
+  }
+
   render() {
     const _thumbs_item_style = {
       float: 'left',
@@ -18,6 +26,7 @@ class ThumbsItem extends Component {
     }
     return (
       <div
+        ref={ node => this.item = node }
         style={ _thumbs_item_style }
         onClick={ () => this.props.handleChangeThumbsID(this.props.idx) }></div>
     )
