@@ -1,6 +1,12 @@
 # React Flexible Carousel [ In progress ]
 ⭐️  Flexible image carousel and respond on any device 💻  🖥  👀￼￼￼￼￼
 
+# Installation
+
+```command
+> npm install react-flexible-carousel --save
+```
+
 # USE - v1.0.0-beta.1
 
 ```javascript
