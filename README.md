@@ -18,7 +18,9 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
   options={ {
     listWidth: 300,
     listHeight: 400,
-    auto_play_speed: 2000
+    auto_play_speed: 2000,
+    start_actionID: 4,
+    thumbsPerPage: 3
   } }
   beforeWrapperMouseOver={ (index, url) => console.log(index, url) }
   afterWrapperMouseOver={ (index, url) => console.log(index, url) }
@@ -40,6 +42,8 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
     - [x] bottom
     - [ ] left
     - [ ] right
+  - [x] thunbs per page
+  - [x] start action ID
 - [x] handle arrow
   - [x] handle arrow use
   - [x] handle custom arrow component
@@ -58,18 +62,19 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 
 # SETTINGS
 
-|    Property    | Type |          Description          | Done |
-| -------------  | ---- |          -----------          | ------- |
-|urls|array|use array of url|Done|
-|auto_play|boolean||Done|
-|use_arrow|boolean||Done|
-|use_left_arrow|ReactElement|custom left arrow ReactElement|Done|
-|use_right_arrow|ReactElement|custom right arrow ReactElement|Done|
-|use_thumbs|boolean||Done|
-|lazy_load|boolean||Done|
-|styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|Done|
-|options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }|Done|
-|start_actionID|int||Not|
+|    Property    | Type |          Description          | Default | Done |
+| -------------  | ---- |          -----------          | ------- | ---- |
+|urls|array|use array of url||Done|
+|auto_play|boolean||false|Done|
+|use_arrow|boolean||false|Done|
+|use_left_arrow|ReactElement|custom left arrow ReactElement|null|Done|
+|use_right_arrow|ReactElement|custom right arrow ReactElement|null|Done|
+|use_thumbs|boolean|||Done|
+|thumbsPerPage|int||5|Done|
+|lazy_load|boolean||true|Done|
+|styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|ease-out|Done|
+|options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
+|start_actionID|int||0|Not|
 
 # EVENT SETTINGS
 |    Property    | Type |          Description          | Done |
