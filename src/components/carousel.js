@@ -24,9 +24,7 @@ class Carousel extends Component {
 
   componentDidMount() {
     const auto_play_speed = this.props.options.auto_play_speed ? this.props.options.auto_play_speed : 1000
-    if (this.props.auto_play && !this.timer) {
-      this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
-    }
+    this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
   }
 
   componentWillUnmount() {
@@ -37,13 +35,14 @@ class Carousel extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.urls !== this.props.urls ||
+      nextProps.auto_play !== this.props.auto_play ||
       nextState.actionID !== this.state.actionID ||
       nextState.wrapperIsHover !== this.state.wrapperIsHover ||
       nextProps.options.listWidth !== this.props.options.listWidth
   }
 
   _handleAutoPlay() {
-    if (this.state.wrapperIsHover) return
+    if (this.state.wrapperIsHover || !this.props.auto_play) return
     if (this.state.actionID + 1 >= this.props.urls.length) {
       this.setState({
         actionID: 0
