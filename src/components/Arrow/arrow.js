@@ -19,7 +19,6 @@ class ArrowLeft extends Component {
   }
 
   render() {
-    console.log(this.props.wrapperHeight)
     const _left_arrow_style = {
       left: 0,
       fontSize: 30,

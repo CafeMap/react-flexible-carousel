@@ -18,7 +18,7 @@ class Carousel extends Component {
         listHeight: props.options.listHeight || 400
       },
       wrapperIsHover: false,
-      actionID: 0
+      actionID: this.props.options.start_actionID || 0
     }
   }
 
@@ -159,6 +159,7 @@ class Carousel extends Component {
       if (this.props.use_thumbs) {
         return (
           <Thumbs
+            thumbsPerPage={ this.props.options.thumbsPerPage }
             actionID={ this.state.actionID }
             listWidth={ Math.ceil(this.props.options.listWidth) }
             urls={ this.props.urls }

@@ -7,14 +7,15 @@ class Thumbs extends Component {
   }
 
   _render_thumbs_items() {
+    const thumbs_per_page = this.props.thumbsPerPage || 5
     return this.props.urls.map((url, idx) => {
       const isAction = idx === this.props.actionID
       return (
         <ThumbsItem
           key={ `thumbs-item-${url}-${idx}` }
           isAction={ isAction }
-          width={ this.props.listWidth / 5 }
-          url={ this.props.actionID >= (idx - 4) ? url : '' }
+          width={ this.props.listWidth / thumbs_per_page }
+          url={ this.props.actionID >= (idx - thumbs_per_page - 1) ? url : '' }
           idx={ idx }
           handleChangeThumbsID={ this.props.handleChangeThumbsID } />
       )
@@ -23,6 +24,7 @@ class Thumbs extends Component {
 
   render() {
     const _wrapper_width = Math.ceil(parseInt(this.props.listWidth, 10) * this.props.urls.length)
+    const thumbs_per_page = this.props.thumbsPerPage || 5
     const thumbs_wrapper_style = {
       width: this.props.listWidth,
       overflow: 'hidden',
@@ -32,7 +34,7 @@ class Thumbs extends Component {
     const thumbs_item_style = {
       width: _wrapper_width,
       transition: 'transform .3s',
-      transform: this.props.actionID > 2 ? `translateX(-${Math.ceil(parseInt(this.props.listWidth / 5, 10) * (this.props.actionID - 2))}px)` : `translateX(0px)`
+      transform: this.props.actionID > (thumbs_per_page - 2) ? `translateX(-${Math.ceil(parseInt(this.props.listWidth / thumbs_per_page, 10) * (this.props.actionID - (thumbs_per_page - 2)))}px)` : `translateX(0px)`
     }
     return (
       <div
