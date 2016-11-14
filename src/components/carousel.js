@@ -18,7 +18,8 @@ class Carousel extends Component {
         listHeight: this.props.options.listHeight || 400
       },
       wrapperIsHover: false,
-      actionID: 0
+      actionID: 0,
+      pre_width: this.props.options.listWidth ? undefined : document.body.offsetWidth
     }
   }
 
@@ -39,6 +40,7 @@ class Carousel extends Component {
     return nextProps.urls !== this.props.urls ||
       nextState.actionID !== this.state.actionID ||
       nextState.wrapperIsHover !== this.state.wrapperIsHover ||
+      nextState.pre_width && nextState.pre_width !== document.body.offsetWidth ? true : false ||
       nextProps.options.listWidth !== this.props.options.listWidth
   }
 
@@ -122,7 +124,7 @@ class Carousel extends Component {
     const _use_lazy_load = this.props.lazy_load
     return this.props.urls.map((url, idx) => {
       return <List
-        width={ Math.ceil(this.props.options.listWidth) }
+        width={ Math.ceil(this.props.options.listWidth) || Math.ceil(this.state.pre_width) }
         height={ this.state.options.listHeight }
         key={ `cm-carousel-list-${url}-${idx}` }
         idx={ idx }
@@ -142,12 +144,14 @@ class Carousel extends Component {
               key={ `arrow-left` }
               wrapperIsHover={ this.state.wrapperIsHover }
               handleArrowLeft={ this._handleArrowLeft.bind(this) }
-              useLeftArrow={ this.props.use_left_arrow } />,
+              useLeftArrow={ this.props.use_left_arrow }
+              wrapperHeight={ this.props.options.listHeight } />,
             <ArrowRight
               key={ `arrow-right` }
               wrapperIsHover={ this.state.wrapperIsHover }
               handleArrowRight={ this._handleArrowRight.bind(this) }
-              useRightArrow={ this.props.use_right_arrow } />
+              useRightArrow={ this.props.use_right_arrow }
+              wrapperHeight={ this.props.options.listHeight } />
           ]
         )
       }
@@ -157,7 +161,7 @@ class Carousel extends Component {
         return (
           <Thumbs
             actionID={ this.state.actionID }
-            listWidth={ Math.ceil(this.props.options.listWidth) }
+            listWidth={ Math.ceil(this.props.options.listWidth) || Math.ceil(this.state.pre_width) }
             urls={ this.props.urls }
             handleChangeThumbsID={ this._handleChangeThumbsID.bind(this) } />
         )
@@ -168,7 +172,7 @@ class Carousel extends Component {
         style={ _wrapper_style }>
         <Wrapper
           ref={ node => this.wrapper = node }
-          listWidth={ Math.ceil(this.props.options.listWidth) }
+          listWidth={ Math.ceil(this.props.options.listWidth) || Math.ceil(this.state.pre_width) }
           listHeight={ this.state.options.listHeight }
           actionID={ this.state.actionID }
           styleEase={ this.props.styleEase }
