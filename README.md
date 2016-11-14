@@ -66,11 +66,11 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
     - [ ] handle thumbs item click
     - [ ] handle thumbs item change
 
-# SETTINGS
+# Props
 
 |    Property    | Type |          Description          | Default | Done |
 | -------------  | ---- |          -----------          | ------- | ---- |
-|urls|array|use array of url||Done|
+|urls|array|An array of urls||Done|
 |auto_play|boolean||false|Done|
 |use_arrow|boolean||false|Done|
 |use_left_arrow|ReactElement|custom left arrow ReactElement|null|Done|
@@ -82,12 +82,12 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 |options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
 |start_actionID|int||0|Not|
 
-# EVENT SETTINGS
+# Events
 |    Property    | Type |          Description          | Done |
 | -------------  | ---- |          -----------          | ------- |
-|beforeWrapperMouseOver(actionID, actionUrl)|function|callback before when wrapper mouse over event call|Done|
-|afterWrapperMouseOver(actionID, actionUrl)|function|callback after when wrapper mouse over event call|Done|
-|beforeWrapperMouseLeave(actionID, actionUrl)|function|callback before wrapper mouse leave event call|Done|
-|afterWrapperMouseLeave(actionID, actionUrl)|function|callback after wrapper mouse leave event call|Done|
-|beforeActionIDChange(preID)|function|callback before actionID change call|Done|
-|afterActionIDChange(nextID)|function|callback after actionID change call|Done|
+|beforeWrapperMouseOver(actionID, actionUrl)|function|This callback fires before wrapper mouse over|Done|
+|afterWrapperMouseOver(actionID, actionUrl)|function|This callback fires after wrapper mouse over|Done|
+|beforeWrapperMouseLeave(actionID, actionUrl)|function|This callback fires before wrapper mouse leave|Done|
+|afterWrapperMouseLeave(actionID, actionUrl)|function|This callback fires after wrapper mouse leave|Done|
+|beforeActionIDChange(preID)|function|This callback fires before actionID changed|Done|
+|afterActionIDChange(nextID)|function|This callback fires after actionID changed|Done|
