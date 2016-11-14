@@ -19,12 +19,15 @@ class ArrowLeft extends Component {
   }
 
   render() {
+    console.log(this.props.wrapperHeight)
     const _left_arrow_style = {
       left: 0,
       fontSize: 30,
       color: 'black',
       position: 'absolute',
-      top: '50%',
+      top: this.props.wrapperHeight / 2,
+      cursor: 'default',
+      userSelect: 'none',
       transition: 'opacity .3s',
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }
@@ -73,7 +76,9 @@ class ArrowRight extends Component {
       fontSize: 30,
       color: 'black',
       position: 'absolute',
-      top: '50%',
+      top: this.props.wrapperHeight / 2,
+      cursor: 'default',
+      userSelect: 'none',
       transition: 'opacity .3s',
       opacity: this.props.wrapperIsHover || this.state.isArrowHover ? 1 : 0
     }

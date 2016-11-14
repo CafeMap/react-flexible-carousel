@@ -18,6 +18,7 @@ class ThumbsItem extends Component {
     }
     return (
       <div
+        ref={ node => this.item = node }
         style={ _thumbs_item_style }
         onClick={ () => this.props.handleChangeThumbsID(this.props.idx) }></div>
     )
