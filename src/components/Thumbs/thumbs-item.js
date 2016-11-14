@@ -5,14 +5,6 @@ class ThumbsItem extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    let img = new Image()
-    img.onload = function() {
-      console.log(this.offsetWidth)
-    }
-    img.src = this.item.style.backgroundImage.replace('url(', '').replace(')', '').replace("'", '').replace('"', '').replace('"', '')
-  }
-
   render() {
     const _thumbs_item_style = {
       float: 'left',
