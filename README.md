@@ -7,7 +7,7 @@
 > npm install react-flexible-carousel --save
 ```
 
-# USE - v1.0.0-beta.1
+# USE - v1.0.0-beta
 
 ```javascript
 const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'http://placehold.it/350x250', 'http://placehold.it/350x300']
