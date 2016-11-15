@@ -114,6 +114,10 @@ class Carousel extends Component {
     this._handleChangeThumbsID(this.state.actionID + 1)
   }
 
+  _handleTouchChangeActionID(correctX) {
+    correctX > 0 ? this._handleArrowRight() : this._handleArrowLeft()
+  }
+
   _handleChangeThumbsID(id) {
     if (this.props.beforeActionIDChange) {
       if (isFunction(this.props.beforeActionIDChange, 'beforeActionIDChange')) {
@@ -189,8 +193,10 @@ class Carousel extends Component {
           listHeight={ this.state.options.listHeight }
           actionID={ this.state.actionID }
           styleEase={ this.props.styleEase }
+          touch_mode={ this.props.touch_mode }
           onWrapperMouseOver={ this._handleWrapperMouseOver.bind(this) }
-          onWrapperMouseLeave={ this._handleWrapperMouseLeave.bind(this) }>
+          onWrapperMouseLeave={ this._handleWrapperMouseLeave.bind(this) }
+          handleTouchChangeActionID={ this._handleTouchChangeActionID.bind(this) }>
           { this._renderList.call(this) }
         </Wrapper>
         { _render_arrow() }
