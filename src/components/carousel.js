@@ -24,9 +24,7 @@ class Carousel extends Component {
 
   componentDidMount() {
     const auto_play_speed = this.props.options.auto_play_speed ? this.props.options.auto_play_speed : 1000
-    if (this.props.auto_play && !this.timer) {
-      this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
-    }
+    this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
   }
 
   componentWillUnmount() {
@@ -37,20 +35,35 @@ class Carousel extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.urls !== this.props.urls ||
+      nextProps.auto_play !== this.props.auto_play ||
+      nextProps.use_thumbs !== this.props.use_thumbs ||
+      nextProps.use_arrow !== this.props.use_arrow ||
+      nextProps.options.thumbsPerPage !== this.props.options.thumbsPerPage ||
       nextState.actionID !== this.state.actionID ||
       nextState.wrapperIsHover !== this.state.wrapperIsHover ||
       nextProps.options.listWidth !== this.props.options.listWidth
   }
 
   _handleAutoPlay() {
-    if (this.state.wrapperIsHover) return
+    if (this.state.wrapperIsHover || !this.props.auto_play) return
     if (this.state.actionID + 1 >= this.props.urls.length) {
       this.setState({
         actionID: 0
       })
     } else {
+      if (this.props.beforeWrapperMouseOver) {
+        if (isFunction(this.props.beforeWrapperMouseOver, 'beforeWrapperMouseOver')) {
+          this.props.beforeActionIDChange(this.state.actionID)
+        }
+      }
       this.setState({
         actionID: this.state.actionID + 1
+      }, () => {
+        if (this.props.afterWrapperMouseOver) {
+          if (isFunction(this.props.afterWrapperMouseOver, 'afterWrapperMouseOver')) {
+            this.props.afterActionIDChange(this.state.actionID)
+          }
+        }
       })
     }
   }

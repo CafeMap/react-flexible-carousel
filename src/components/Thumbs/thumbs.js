@@ -15,7 +15,7 @@ class Thumbs extends Component {
           key={ `thumbs-item-${url}-${idx}` }
           isAction={ isAction }
           width={ this.props.listWidth / thumbs_per_page }
-          url={ this.props.actionID >= (idx - thumbs_per_page - 1) ? url : '' }
+          url={ url }
           idx={ idx }
           handleChangeThumbsID={ this.props.handleChangeThumbsID } />
       )
