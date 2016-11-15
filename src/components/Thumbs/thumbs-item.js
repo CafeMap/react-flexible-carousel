@@ -6,7 +6,7 @@ class ThumbsItem extends Component {
   }
 
   render() {
-    const _thumbs_item_style = {
+    const _thumbs_item_style = Object.assign({
       float: 'left',
       width: this.props.width,
       height: 60,
@@ -15,7 +15,7 @@ class ThumbsItem extends Component {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center',
       opacity: this.props.isAction ? 1 : 0.3,
-    }
+    }, this.props.thumbs_item_style)
     return (
       <div
         ref={ node => this.item = node }

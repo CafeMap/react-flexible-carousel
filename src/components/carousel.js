@@ -135,55 +135,68 @@ class Carousel extends Component {
     })
   }
 
-  _renderList() {
+  _renderList(carousel_list_style) {
     const _use_lazy_load = this.props.lazy_load
     return this.props.urls.map((url, idx) => {
       return <List
         width={ Math.ceil(this.props.options.listWidth) }
         height={ this.state.options.listHeight }
+        carousel_list_style={ carousel_list_style }
         key={ `cm-carousel-list-${url}-${idx}` }
         idx={ idx }
         url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
     })
   }
 
+  _render_thumbs = (thumbs_style, thumbs_item_style) => {
+    if (this.props.use_thumbs) {
+      return (
+        <Thumbs
+          thumbsPerPage={ this.props.options.thumbsPerPage }
+          thumbs_style={ thumbs_style }
+          thumbs_item_style={ thumbs_item_style }
+          actionID={ this.state.actionID }
+          listWidth={ Math.ceil(this.props.options.listWidth) }
+          urls={ this.props.urls }
+          handleChangeThumbsID={ this._handleChangeThumbsID.bind(this) } />
+      )
+    }
+  }
+
+  _render_arrow = () => {
+    if (this.props.use_arrow) {
+      return (
+        [
+          <ArrowLeft
+            key={ `arrow-left` }
+            wrapperIsHover={ this.state.wrapperIsHover }
+            handleArrowLeft={ this._handleArrowLeft.bind(this) }
+            useLeftArrow={ this.props.use_left_arrow }
+            wrapperHeight={ this.props.options.listHeight } />,
+          <ArrowRight
+            key={ `arrow-right` }
+            wrapperIsHover={ this.state.wrapperIsHover }
+            handleArrowRight={ this._handleArrowRight.bind(this) }
+            useRightArrow={ this.props.use_right_arrow }
+            wrapperHeight={ this.props.options.listHeight } />
+        ]
+      )
+    }
+  }
+
   render() {
+    const {
+      custom_styles
+    } = this.props
     const _wrapper_style = {
       width: Math.ceil(this.props.options.listWidth),
       position: 'relative'
     }
-    const _render_arrow = () => {
-      if (this.props.use_arrow) {
-        return (
-          [
-            <ArrowLeft
-              key={ `arrow-left` }
-              wrapperIsHover={ this.state.wrapperIsHover }
-              handleArrowLeft={ this._handleArrowLeft.bind(this) }
-              useLeftArrow={ this.props.use_left_arrow }
-              wrapperHeight={ this.props.options.listHeight } />,
-            <ArrowRight
-              key={ `arrow-right` }
-              wrapperIsHover={ this.state.wrapperIsHover }
-              handleArrowRight={ this._handleArrowRight.bind(this) }
-              useRightArrow={ this.props.use_right_arrow }
-              wrapperHeight={ this.props.options.listHeight } />
-          ]
-        )
-      }
-    }
-    const _render_thumbs = () => {
-      if (this.props.use_thumbs) {
-        return (
-          <Thumbs
-            thumbsPerPage={ this.props.options.thumbsPerPage }
-            actionID={ this.state.actionID }
-            listWidth={ Math.ceil(this.props.options.listWidth) }
-            urls={ this.props.urls }
-            handleChangeThumbsID={ this._handleChangeThumbsID.bind(this) } />
-        )
-      }
-    }
+    const _carousel_wrapper_style = Object.assign({}, custom_styles ? custom_styles.wrapper : {})
+    const _carousel_list_style = Object.assign({}, custom_styles ? custom_styles.list : {})
+    const _thumbs_style = Object.assign({}, custom_styles ? custom_styles.thumbs : {})
+    const _thumbs_item_style = Object.assign({}, custom_styles ? custom_styles.thumbs_item : {})
+
     return (
       <div
         style={ _wrapper_style }>
@@ -192,15 +205,16 @@ class Carousel extends Component {
           listWidth={ Math.ceil(this.props.options.listWidth) }
           listHeight={ this.state.options.listHeight }
           actionID={ this.state.actionID }
+          carouse_wrapper_style={ _carousel_wrapper_style }
           styleEase={ this.props.styleEase }
           touch_mode={ this.props.touch_mode }
           onWrapperMouseOver={ this._handleWrapperMouseOver.bind(this) }
           onWrapperMouseLeave={ this._handleWrapperMouseLeave.bind(this) }
           handleTouchChangeActionID={ this._handleTouchChangeActionID.bind(this) }>
-          { this._renderList.call(this) }
+          { this._renderList.call(this, _carousel_list_style) }
         </Wrapper>
-        { _render_arrow() }
-        { _render_thumbs() }
+        { this._render_arrow.call(this) }
+        { this._render_thumbs.call(this, _thumbs_style, _thumbs_item_style) }
       </div>
     )
   }
