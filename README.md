@@ -71,10 +71,10 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 - [ ] handle hook event
   - [ ] handle before, after bind event
     - [x] handle wrapper mouse over, leave event
-    - [ ] handle arrow mouse click
+    - [ ] ~~handle arrow mouse click~~
     - [x] handle actionID change
     - [ ] handle thumbs item click
-    - [ ] handle thumbs item change
+    - [ ] ~~handle thumbs item change~~
 
 # Props
 
@@ -90,7 +90,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 |thumbsPerPage|int||5|Done|
 |lazy_load|boolean||true|Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|ease-out|Done|
-|custom_styles|object|custom styles for carousel component||Done|
+|custom_styles|object|custom styles for carousel component. e.g. "wrapper", "list", "thumbs", "thumbs_item"||Done|
 |options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
 |start_actionID|int||0|Done|
 
