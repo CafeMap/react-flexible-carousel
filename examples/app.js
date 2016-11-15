@@ -54,6 +54,12 @@ class App extends Component {
           use_thumbs={ this.state.use_thumbs }
           touch_mode={ true }
           lazy_load={ true }
+          custom_styles={{
+            wrapper: { border: '1px solid #ccc' },
+            list: { backgroundColor: 'black' },
+            thumbs: { border: '1px solid #ccc' },
+            thumbs_item: { backgroundColor: 'yellow' }
+          }}
           styleEase='ease-in-out'
           use_left_arrow={
             <div>
