@@ -36,6 +36,9 @@ class Carousel extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.urls !== this.props.urls ||
       nextProps.auto_play !== this.props.auto_play ||
+      nextProps.use_thumbs !== this.props.use_thumbs ||
+      nextProps.use_arrow !== this.props.use_arrow ||
+      nextProps.options.thumbsPerPage !== this.props.options.thumbsPerPage ||
       nextState.actionID !== this.state.actionID ||
       nextState.wrapperIsHover !== this.state.wrapperIsHover ||
       nextProps.options.listWidth !== this.props.options.listWidth
@@ -48,8 +51,19 @@ class Carousel extends Component {
         actionID: 0
       })
     } else {
+      if (this.props.beforeWrapperMouseOver) {
+        if (isFunction(this.props.beforeWrapperMouseOver, 'beforeWrapperMouseOver')) {
+          this.props.beforeActionIDChange(this.state.actionID)
+        }
+      }
       this.setState({
         actionID: this.state.actionID + 1
+      }, () => {
+        if (this.props.afterWrapperMouseOver) {
+          if (isFunction(this.props.afterWrapperMouseOver, 'afterWrapperMouseOver')) {
+            this.props.afterActionIDChange(this.state.actionID)
+          }
+        }
       })
     }
   }
