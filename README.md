@@ -18,6 +18,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
   use_arrow={ true }
   use_thumbs={ true }
   lazy_load={ true }
+  touch_mode={ true }
   styleEase='ease-in-out'
   use_left_arrow={<div>Left</div>}
   use_right_arrow={<div>Right</div>}
@@ -38,6 +39,8 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 
 # PROGRESS
 
+- [ ] handle wrapper
+  - [ ] custom wrapper style
 - [x] handle list slider
   - [x] handle list auto play
   - [ ] handle custom image
@@ -48,7 +51,8 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
     - [x] bottom
     - [ ] left
     - [ ] right
-  - [x] thunbs per page
+  - [ ] thumbs item custom style
+  - [x] thumbs per page
   - [x] start action ID
 - [x] handle arrow
   - [x] handle arrow use
@@ -56,7 +60,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 - [x] handle lazy load
 - [x] handle respond design
   - [x] with parent element
-- [ ] handle touch mode
+- [x] handle touch mode
 - [ ] handle fancy box show ( click list image and show the bigger one )
 - [ ] handle hook event
   - [ ] handle before, after bind event
@@ -76,11 +80,12 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 |use_left_arrow|ReactElement|custom left arrow ReactElement|null|Done|
 |use_right_arrow|ReactElement|custom right arrow ReactElement|null|Done|
 |use_thumbs|boolean|||Done|
+|touch_mode|boolean||control touch mode by yourself|Done|
 |thumbsPerPage|int||5|Done|
 |lazy_load|boolean||true|Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|ease-out|Done|
 |options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
-|start_actionID|int||0|Not|
+|start_actionID|int||0|Done|
 
 # Events
 |    Property    | Type |          Description          | Done |
