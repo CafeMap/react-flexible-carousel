@@ -20,6 +20,12 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
   lazy_load={ true }
   touch_mode={ true }
   styleEase='ease-in-out'
+  custom_styles={{
+    wrapper: { border: '1px solid #ccc' },
+    list: { backgroundColor: 'black' },
+    thumbs: { border: '1px solid #ccc' },
+    thumbs_item: { backgroundColor: 'yellow' }
+  }}
   use_left_arrow={<div>Left</div>}
   use_right_arrow={<div>Right</div>}
   options={ {
@@ -40,7 +46,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 # PROGRESS
 
 - [ ] handle wrapper
-  - [ ] custom wrapper style
+  - [x] custom wrapper style
 - [x] handle list slider
   - [x] handle list auto play
   - [ ] handle custom image
@@ -51,7 +57,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
     - [x] bottom
     - [ ] left
     - [ ] right
-  - [ ] thumbs item custom style
+  - [x] thumbs item custom style
   - [x] thumbs per page
   - [x] start action ID
 - [x] handle arrow
@@ -84,6 +90,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 |thumbsPerPage|int||5|Done|
 |lazy_load|boolean||true|Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|ease-out|Done|
+|custom_styles|object|custom styles for carousel component||Done|
 |options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
 |start_actionID|int||0|Done|
 
