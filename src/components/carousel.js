@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { getDOMWidth } from '../util/findDOMNode'
 import { isFunction } from '../util/validateType'
 
-import Wrapper from './wrapper'
+import Wrapper from './Wrapper/wrapper'
+import List from './Wrapper/list'
 import Thumbs from './Thumbs/thumbs'
-import List from './list'
 import { ArrowLeft, ArrowRight } from './Arrow/arrow'
 
 class Carousel extends Component {
