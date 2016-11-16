@@ -1,6 +1,9 @@
 # React Flexible Carousel
 ⭐️  Flexible image carousel and respond on any device 💻  🖥  👀￼￼￼￼￼
 
+# Example page
+[Demo Page](https://cafemap.github.io/react-flexible-carousel/)
+
 # Installation
 
 ```command
