@@ -52,7 +52,13 @@ class App extends Component {
           use_arrow={ this.state.use_arrow }
           auto_play={ this.state.auto_play }
           use_thumbs={ this.state.use_thumbs }
+          touch_mode={ true }
           lazy_load={ true }
+          custom_styles={{
+            wrapper: {
+              backgroundColor: '#ccc'
+            }
+          }}
           styleEase='ease-in-out'
           use_left_arrow={
             <div>
@@ -65,10 +71,10 @@ class App extends Component {
             </div>
           }
           options={ {
-            listWidth: 400,
+            listWidth: document.body.offsetWidth,
             listHeight: 300,
             thumbsPerPage: this.state.thumbsPerPage,
-            start_actionID: 4
+            start_actionID: 0
           } }
           beforeWrapperMouseOver={ (index, url) => console.log('beforeWrapperMouseOver >', index, url) }
           afterWrapperMouseOver={ (index, url) => console.log('afterWrapperMouseOver >', index, url) }

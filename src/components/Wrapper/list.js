@@ -6,7 +6,7 @@ class List extends Component {
   }
 
   render() {
-    const _list_style = {
+    const _list_style = Object.assign({
       width: this.props.width,
       height: this.props.height,
       float: 'left',
@@ -14,7 +14,7 @@ class List extends Component {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center',
       backgroundSize: 'contain'
-    }
+    }, this.props.carousel_list_style)
     return (
       <div style={ _list_style }></div>
     )

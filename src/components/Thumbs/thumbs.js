@@ -6,13 +6,14 @@ class Thumbs extends Component {
     super(props);
   }
 
-  _render_thumbs_items() {
+  _render_thumbs_items(thumbs_item_style) {
     const thumbs_per_page = this.props.thumbsPerPage || 5
     return this.props.urls.map((url, idx) => {
       const isAction = idx === this.props.actionID
       return (
         <ThumbsItem
           key={ `thumbs-item-${url}-${idx}` }
+          thumbs_item_style={ thumbs_item_style }
           isAction={ isAction }
           width={ this.props.listWidth / thumbs_per_page }
           url={ url }
@@ -25,12 +26,12 @@ class Thumbs extends Component {
   render() {
     const _wrapper_width = Math.ceil(parseInt(this.props.listWidth, 10) * this.props.urls.length)
     const thumbs_per_page = this.props.thumbsPerPage || 5
-    const thumbs_wrapper_style = {
+    const thumbs_wrapper_style = Object.assign({
       width: this.props.listWidth,
       overflow: 'hidden',
       backgroundColor: 'white',
       borderRadius: '0px 0px 3px 3px'
-    }
+    }, this.props.thumbs_style)
     const thumbs_item_style = {
       width: _wrapper_width,
       transition: 'transform .3s',
@@ -41,7 +42,7 @@ class Thumbs extends Component {
         style={ thumbs_wrapper_style }>
         <div
           style={ thumbs_item_style }>
-          { this._render_thumbs_items.call(this) }
+          { this._render_thumbs_items.call(this, this.props.thumbs_item_style) }
         </div>
       </div>
     )
