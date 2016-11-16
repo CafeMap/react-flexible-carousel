@@ -55,10 +55,9 @@ class App extends Component {
           touch_mode={ true }
           lazy_load={ true }
           custom_styles={{
-            wrapper: { border: '1px solid #ccc' },
-            list: { backgroundColor: 'black' },
-            thumbs: { border: '1px solid #ccc' },
-            thumbs_item: { backgroundColor: 'yellow' }
+            wrapper: {
+              backgroundColor: '#ccc'
+            }
           }}
           styleEase='ease-in-out'
           use_left_arrow={
@@ -75,7 +74,7 @@ class App extends Component {
             listWidth: document.body.offsetWidth,
             listHeight: 300,
             thumbsPerPage: this.state.thumbsPerPage,
-            start_actionID: 4
+            start_actionID: 0
           } }
           beforeWrapperMouseOver={ (index, url) => console.log('beforeWrapperMouseOver >', index, url) }
           afterWrapperMouseOver={ (index, url) => console.log('afterWrapperMouseOver >', index, url) }

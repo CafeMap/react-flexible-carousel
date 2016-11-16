@@ -7,9 +7,11 @@
 > npm install react-flexible-carousel --save
 ```
 
-# USE - v1.0.0
+# USE - v1.1.0
 
 ```javascript
+import { Carousel } from 'react-flexible-carousel'
+
 const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'http://placehold.it/350x250', 'http://placehold.it/350x300']
 
 <Carousel
@@ -29,7 +31,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
   use_left_arrow={<div>Left</div>}
   use_right_arrow={<div>Right</div>}
   options={ {
-    listWidth: 300,
+    listWidth: 350,
     listHeight: 400,
     auto_play_speed: 2000,
     start_actionID: 4,
@@ -54,6 +56,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
     - [ ] use custom component
 - [x] handle thumbs
   - [ ] custom thumbs position
+    - [ ] top
     - [x] bottom
     - [ ] left
     - [ ] right
