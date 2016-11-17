@@ -148,7 +148,7 @@ class Carousel extends Component {
     })
   }
 
-  _render_thumbs = (thumbs_style, thumbs_item_style) => {
+  _render_thumbs(thumbs_style, thumbs_item_style) {
     if (this.props.use_thumbs) {
       return (
         <Thumbs
@@ -163,7 +163,7 @@ class Carousel extends Component {
     }
   }
 
-  _render_arrow = () => {
+  _render_arrow() {
     if (this.props.use_arrow) {
       return (
         [
