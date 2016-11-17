@@ -23,8 +23,7 @@ class Carousel extends Component {
   }
 
   componentDidMount() {
-    const auto_play_speed = this.props.options.auto_play_speed ? this.props.options.auto_play_speed : 1000
-    this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
+    this._handleBindAutoPlayTimer()
   }
 
   componentWillUnmount() {
@@ -66,6 +65,12 @@ class Carousel extends Component {
         }
       })
     }
+  }
+
+  _handleBindAutoPlayTimer() {
+    console.log('bind')
+    const auto_play_speed = this.props.options.auto_play_speed ? this.props.options.auto_play_speed : 1000
+    this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
   }
 
   _handleWrapperMouseOver() {
@@ -119,6 +124,10 @@ class Carousel extends Component {
   }
 
   _handleChangeThumbsID(id) {
+    if (this.timer) {
+      clearInterval(this.timer)
+      this._handleBindAutoPlayTimer()
+    }
     if (this.props.beforeActionIDChange) {
       if (isFunction(this.props.beforeActionIDChange, 'beforeActionIDChange')) {
         this.props.beforeActionIDChange(this.state.actionID)
