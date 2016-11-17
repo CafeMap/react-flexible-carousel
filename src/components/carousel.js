@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { getDOMWidth } from '../util/findDOMNode'
 import { isFunction } from '../util/validateType'
 
@@ -68,7 +68,6 @@ class Carousel extends Component {
   }
 
   _handleBindAutoPlayTimer() {
-    console.log('bind')
     const auto_play_speed = this.props.options.auto_play_speed ? this.props.options.auto_play_speed : 1000
     this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
   }
@@ -227,6 +226,30 @@ class Carousel extends Component {
       </div>
     )
   }
+}
+
+Carousel.propTypes = {
+  urls: PropTypes.array.isRequired,
+  options: PropTypes.object,
+
+  use_arrow: PropTypes.bool,
+  auto_play: PropTypes.bool,
+  use_thumbs: PropTypes.bool,
+  touch_mode: PropTypes.bool,
+  lazy_load: PropTypes.bool,
+
+  custom_styles: PropTypes.object,
+  styleEase: PropTypes.string,
+
+  use_left_arrow: PropTypes.element,
+  use_right_arrow: PropTypes.element,
+
+  beforeWrapperMouseOver: PropTypes.func,
+  afterWrapperMouseOver: PropTypes.func,
+  beforeWrapperMouseLeave: PropTypes.func,
+  afterWrapperMouseLeave: PropTypes.func,
+  beforeActionIDChange: PropTypes.func,
+  afterActionIDChange: PropTypes.func
 }
 
 export default Carousel
