@@ -44,7 +44,6 @@ class Wrapper extends Component {
       width: this.props.listWidth,
       height: this.props.listHeight,
       overflow: 'hidden',
-      backgroundColor: 'white'
     }, this.props.carouse_wrapper_style)
     const children_style = {
       width: Math.ceil(parseInt(this.props.listWidth, 10) * children_count),
