@@ -10,7 +10,7 @@
 > npm install react-flexible-carousel --save
 ```
 
-# USE - v1.1.0
+# USE - v1.1.2
 
 ```javascript
 import { Carousel } from 'react-flexible-carousel'
