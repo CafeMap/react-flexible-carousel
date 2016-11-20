@@ -29,7 +29,6 @@ class Thumbs extends Component {
     const thumbs_wrapper_style = Object.assign({
       width: this.props.listWidth,
       overflow: 'hidden',
-      backgroundColor: 'white',
       borderRadius: '0px 0px 3px 3px'
     }, this.props.thumbs_style)
     const thumbs_item_style = {
