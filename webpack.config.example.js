@@ -1,20 +1,14 @@
-var path = require('path')
+let path = require('path')
+let builder = require('webpack-fatigue-embrace')
 
-module.exports = {
+let options = {
   entry: './examples/app.js',
   output: {
     path: path.resolve(__dirname, '/'),
-    filename: 'bundle.js',
     publicPath: path.resolve(__dirname, '/')
-  },
-  devtool: '#eval',
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      }
-    ]
   }
 }
+
+let wfe = new builder(options)
+
+module.exports = wfe

@@ -2450,6 +2450,10 @@ watchpack@^1.0.0:
     chokidar "^1.4.3"
     graceful-fs "^4.1.2"
 
+webpack-fatigue-embrace:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/webpack-fatigue-embrace/-/webpack-fatigue-embrace-1.0.3.tgz#624044d4061ba6ec95915d8f549f7eb49f8566e1"
+
 webpack-sources@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-0.1.2.tgz#057a3f3255f8ba561b901d9150589aa103a57e65"

@@ -17,7 +17,7 @@
     "build": "npm run build-cjs && npm run build-es",
     "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./src -d lib",
     "build-es": "rimraf es && cross-env BABEL_ENV=es babel ./src -d es",
-    "build-umd": "cross-env NODE_ENV=development webpack src/index.js umd/ReactFlexibleCarousel.js",
+    "build-umd": "cross-env NODE_ENV=development webpack ./src/index.js umd/ReactFlexibleCarousel.js",
     "build-min": "cross-env NODE_ENV=production webpack -p src/index.js umd/ReactFlexibleCarousel.min.js"
   },
   "keywords": [
@@ -38,7 +38,8 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "rimraf": "^2.5.4",
-    "webpack": "beta"
+    "webpack": "beta",
+    "webpack-fatigue-embrace": "^1.0.3"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"
