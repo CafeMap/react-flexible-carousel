@@ -2,6 +2,117 @@ import React, { Component } from 'react'
 import ReactDom from 'react-dom'
 import { Carousel } from '../lib/index.js'
 
+const CustomThumbs = (setting, handler) => {
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-around',
+      paddingTop: 10
+    }}>
+      {
+        setting.urls.map((url, index) => {
+          return (
+            <div
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: 50,
+                border: `${ setting.actionID === index ? '2px solid #000' : '1px solid #fff' }`,
+                backgroundImage: `url(${url})`,
+                backgroundSize: 'contain',
+                cursor: 'pointer'
+              }}
+              onClick={ () => handler.handleChangeThumbsID(index) }
+              key={ index }>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
+const CustomList = (setting) => {
+  return (
+    <div style={{ display: 'flex', width: setting.width * 10, height: setting.height }}>
+      {
+        setting.urls.map((url, index) => {
+          return (
+            <div
+              style={{
+                position: 'relative',
+                width: setting.width,
+                backgroundImage: `url(${url})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center center',
+              }} key={ index }>
+              <p style={{
+                width: '100%',
+                textAlign: 'center',
+                position: 'absolute',
+                top: 0
+              }}>
+                <span
+                  style={{
+                    padding: 5,
+                    backgroundColor: 'rgba(255, 255, 255, .6)',
+                    color: '#000'
+                  }}>Im top of the list index { index }</span>
+              </p>
+              <p style={{
+                width: '100%',
+                textAlign: 'center',
+                position: 'absolute',
+                top: (setting.height - 28) / 2
+              }}>
+                <span
+                  style={{
+                    padding: 5,
+                    backgroundColor: 'rgba(0, 0, 0, .6)',
+                    borderRadius: 5,
+                    color: '#fff'
+                  }}>
+                    Im Middle of the list button
+                  </span>
+                  <button onClick={ () => console.log(`clicked-${index}`) }>Click Me</button>
+                  <button onClick={ () => console.log(`clicked me second button`) }>Click Me Please</button>
+              </p>
+              <p style={{
+                width: '100%',
+                textAlign: 'center',
+                position: 'absolute',
+                bottom: 30
+              }}>
+                <span
+                  style={{
+                    border: '1px solid #ccc',
+                    padding: 5,
+                    backgroundColor: 'rgba(0, 0, 0, .6)',
+                    color: '#fff'
+                  }}>awesome I can perform myself</span>
+              </p>
+              <p style={{
+                width: '100%',
+                textAlign: 'center',
+                position: 'absolute',
+                bottom: 0
+              }}>
+                <span
+                  style={{
+                    border: '1px solid #ccc',
+                    padding: 5,
+                    backgroundColor: 'rgba(0, 0, 0, .6)',
+                    color: '#fff'
+                  }}>{ url }</span>
+              </p>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -23,6 +134,8 @@ class App extends Component {
       auto_play: false,
       use_arrow: false,
       use_thumbs: true,
+      use_custom_thumbs: false,
+      use_custom_lists: false,
       lazy_load: false,
       thumbsPerPage: 3,
       after_action_id: 0,
@@ -55,10 +168,10 @@ class App extends Component {
           touch_mode={ true }
           lazy_load={ true }
           custom_styles={{
-            wrapper: {
-              backgroundColor: '#ccc'
-            }
+            thumbs: { paddingTop: 10 }
           }}
+          custom_thumbs={ this.state.use_custom_thumbs ? CustomThumbs : undefined }
+          custom_lists={ this.state.use_custom_lists ? CustomList : undefined }
           styleEase='ease-in-out'
           use_left_arrow={
             <div>
@@ -95,6 +208,18 @@ class App extends Component {
               type='checkbox'
               defaultChecked={ this.state.use_thumbs }
               onChange={ () => this.setState({ use_thumbs: !this.state.use_thumbs }) }/> Use Thumbs
+          </div>
+          <div>
+            <input
+              type='checkbox'
+              defaultChecked={ this.state.use_custom_thumbs }
+              onChange={ () => this.setState({ use_custom_thumbs: !this.state.use_custom_thumbs }) }/> Use Custom Thumbs
+          </div>
+          <div>
+            <input
+              type='checkbox'
+              defaultChecked={ this.state.use_custom_lists }
+              onChange={ () => this.setState({ use_custom_lists: !this.state.use_custom_lists }) }/> Use Custom Lists
           </div>
           <div>
             <input
