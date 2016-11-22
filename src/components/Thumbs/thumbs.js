@@ -34,7 +34,10 @@ class Thumbs extends Component {
     const thumbs_item_style = {
       width: _wrapper_width,
       transition: 'transform .3s',
-      transform: this.props.actionID > (thumbs_per_page - 2) ? `translateX(-${Math.ceil(parseInt(this.props.listWidth / thumbs_per_page, 10) * (this.props.actionID - (thumbs_per_page - 2)))}px)` : `translateX(0px)`
+      transform: this.props.actionID > (thumbs_per_page / 2) ?
+        `translateX(-${Math.ceil(parseInt(this.props.listWidth / thumbs_per_page, 10) * (thumbs_per_page % 2 === 0 ? (this.props.actionID - thumbs_per_page / 2) + 0.52 :
+          Math.ceil( (this.props.actionID - thumbs_per_page / 2) )))}px)` : 
+          `translateX(0px)`
     }
     return (
       <div
