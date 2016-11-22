@@ -36,6 +36,8 @@ class Carousel extends Component {
     return nextProps.urls !== this.props.urls ||
       nextProps.auto_play !== this.props.auto_play ||
       nextProps.use_thumbs !== this.props.use_thumbs ||
+      nextProps.custom_thumbs !== this.props.custom_thumbs ||
+      nextProps.custom_lists !== this.props.custom_lists ||
       nextProps.use_arrow !== this.props.use_arrow ||
       nextProps.options.thumbsPerPage !== this.props.options.thumbsPerPage ||
       nextState.actionID !== this.state.actionID ||
@@ -145,15 +147,25 @@ class Carousel extends Component {
 
   _renderList(carousel_list_style) {
     const _use_lazy_load = this.props.lazy_load
-    return this.props.urls.map((url, idx) => {
-      return <List
-        width={ Math.ceil(this.props.options.listWidth) }
-        height={ this.state.options.listHeight }
-        carousel_list_style={ carousel_list_style }
-        key={ `cm-carousel-list-${url}-${idx}` }
-        idx={ idx }
-        url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
-    })
+    return this.props.custom_lists ? (
+      React.cloneElement(this.props.custom_lists(
+        {
+          urls: this.props.urls,
+          width: Math.ceil(this.props.options.listWidth),
+          height: this.state.options.listHeight
+        }
+      ))
+    ) : (
+      this.props.urls.map((url, idx) => {
+        return <List
+          width={ Math.ceil(this.props.options.listWidth) }
+          height={ this.state.options.listHeight }
+          carousel_list_style={ carousel_list_style }
+          key={ `cm-carousel-list-${url}-${idx}` }
+          idx={ idx }
+          url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
+      })
+    )
   }
 
   _render_thumbs(thumbs_style, thumbs_item_style) {
@@ -194,7 +206,8 @@ class Carousel extends Component {
 
   render() {
     const {
-      custom_styles
+      custom_styles,
+      custom_thumbs
     } = this.props
     const _wrapper_style = {
       width: Math.ceil(this.props.options.listWidth),
@@ -222,7 +235,15 @@ class Carousel extends Component {
           { this._renderList.call(this, _carousel_list_style) }
         </Wrapper>
         { this._render_arrow.call(this) }
-        { this._render_thumbs.call(this, _thumbs_style, _thumbs_item_style) }
+        { custom_thumbs ?
+            custom_thumbs(
+              {
+                actionID: this.state.actionID,
+                urls: this.props.urls
+              },
+              { handleChangeThumbsID: this._handleChangeThumbsID.bind(this) }
+            ) :
+            this._render_thumbs.call(this, _thumbs_style, _thumbs_item_style) }
       </div>
     )
   }
