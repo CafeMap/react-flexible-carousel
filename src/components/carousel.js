@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { getDOMWidth } from '../util/findDOMNode'
-import { isFunction } from '../util/validateType'
+import {
+  isFunction,
+  isReactElement
+} from '../util/validateType'
 
 import Wrapper from './Wrapper/wrapper'
 import List from './Wrapper/list'
@@ -146,17 +149,13 @@ class Carousel extends Component {
   }
 
   _renderList(carousel_list_style) {
+    const {
+      custom_lists
+    } = this.props
     const _use_lazy_load = this.props.lazy_load
-    return this.props.custom_lists ? (
-      React.cloneElement(this.props.custom_lists(
-        {
-          urls: this.props.urls,
-          width: Math.ceil(this.props.options.listWidth),
-          height: this.state.options.listHeight
-        }
-      ))
-    ) : (
-      this.props.urls.map((url, idx) => {
+
+    if (!custom_lists) {
+      return this.props.urls.map((url, idx) => {
         return <List
           width={ Math.ceil(this.props.options.listWidth) }
           height={ this.state.options.listHeight }
@@ -165,11 +164,42 @@ class Carousel extends Component {
           idx={ idx }
           url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
       })
-    )
+    }
+    if (custom_lists) {
+      const reactElement = isReactElement(custom_lists)
+      const functionElement = isFunction(custom_lists)
+      if (reactElement) {
+        return (
+          React.createElement(custom_lists, {
+            setting: {
+              urls: this.props.urls,
+              width: Math.ceil(this.props.options.listWidth),
+              height: this.state.options.listHeight
+            }
+          })
+        )
+      }
+      if (functionElement) {
+        return (
+          React.cloneElement(this.props.custom_lists(
+            {
+              urls: this.props.urls,
+              width: Math.ceil(this.props.options.listWidth),
+              height: this.state.options.listHeight
+            }
+          ))
+        )
+      }
+      throw new Error('custom thumbs must be react component or function.')
+    }
   }
 
   _render_thumbs(thumbs_style, thumbs_item_style) {
-    if (this.props.use_thumbs) {
+    const {
+      custom_thumbs
+    } = this.props
+
+    if (this.props.use_thumbs && !custom_thumbs) {
       return (
         <Thumbs
           thumbsPerPage={ this.props.options.thumbsPerPage }
@@ -180,6 +210,31 @@ class Carousel extends Component {
           urls={ this.props.urls }
           handleChangeThumbsID={ this._handleChangeThumbsID.bind(this) } />
       )
+    }
+    if (custom_thumbs) {
+      const reactElement = isReactElement(custom_thumbs)
+      const functionElement = isFunction(custom_thumbs)
+      if (reactElement) {
+        return React.createElement(custom_thumbs, {
+          setting: {
+            actionID: this.state.actionID,
+            urls: this.props.urls
+          },
+          handler: {
+            handleChangeThumbsID: this._handleChangeThumbsID.bind(this)
+          }
+        })
+      }
+      if (functionElement) {
+        return custom_thumbs(
+          {
+            actionID: this.state.actionID,
+            urls: this.props.urls
+          },
+          { handleChangeThumbsID: this._handleChangeThumbsID.bind(this) }
+        )
+      }
+      throw new Error('custom thumbs must be react component or function.')
     }
   }
 
@@ -235,15 +290,7 @@ class Carousel extends Component {
           { this._renderList.call(this, _carousel_list_style) }
         </Wrapper>
         { this._render_arrow.call(this) }
-        { custom_thumbs ?
-            custom_thumbs(
-              {
-                actionID: this.state.actionID,
-                urls: this.props.urls
-              },
-              { handleChangeThumbsID: this._handleChangeThumbsID.bind(this) }
-            ) :
-            this._render_thumbs.call(this, _thumbs_style, _thumbs_item_style) }
+        { this._render_thumbs.call(this, _thumbs_style, _thumbs_item_style) }
       </div>
     )
   }
