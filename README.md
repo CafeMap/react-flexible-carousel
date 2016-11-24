@@ -10,43 +10,9 @@
 > npm install react-flexible-carousel --save
 ```
 
-# USE - v1.2.0
+# USE
 
-```javascript
-import { Carousel } from 'react-flexible-carousel'
-
-const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'http://placehold.it/350x250', 'http://placehold.it/350x300']
-
-<Carousel
-  urls={ urls }
-  auto_play={ true }
-  use_arrow={ true }
-  use_thumbs={ true }
-  lazy_load={ true }
-  touch_mode={ true }
-  styleEase='ease-in-out'
-  custom_styles={{
-    wrapper: { border: '1px solid #ccc' },
-    list: { backgroundColor: 'black' },
-    thumbs: { border: '1px solid #ccc' },
-    thumbs_item: { backgroundColor: 'yellow' }
-  }}
-  use_left_arrow={<div>Left</div>}
-  use_right_arrow={<div>Right</div>}
-  options={ {
-    listWidth: 350,
-    listHeight: 400,
-    auto_play_speed: 2000,
-    start_actionID: 4,
-    thumbsPerPage: 3
-  } }
-  beforeWrapperMouseOver={ (index, url) => console.log(index, url) }
-  afterWrapperMouseOver={ (index, url) => console.log(index, url) }
-  beforeWrapperMouseLeave={ (index, url) => console.log(index, url) }
-  afterWrapperMouseLeave={ (index, url) => console.log(index, url) }
-  beforeActionIDChange={ (preId) => console.log(preId) }
-  afterActionIDChange={ (nextId) => console.log(nextId) } />
-```
+[examples](https://github.com/CafeMap/react-flexible-carousel/tree/master/examples)
 
 # PROGRESS
 
