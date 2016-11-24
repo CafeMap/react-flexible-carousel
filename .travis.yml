@@ -1,0 +1,17 @@
+language: node_js
+dist: trusty
+node_js:
+  - "4"
+  - "6"
+  - "7"
+install:
+  - npm install
+script:
+  - npm run eslint
+notifications:
+  email:
+    on_failure: change
+cache:
+  yarn: true
+  directories:
+    - node_modules
