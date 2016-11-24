@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { getDOMWidth } from '../util/findDOMNode'
-import { isFunction } from '../util/validateType'
+import {
+  isFunction,
+  isReactElement
+} from '../util/validateType'
 
 import Wrapper from './Wrapper/wrapper'
 import List from './Wrapper/list'
@@ -36,6 +39,8 @@ class Carousel extends Component {
     return nextProps.urls !== this.props.urls ||
       nextProps.auto_play !== this.props.auto_play ||
       nextProps.use_thumbs !== this.props.use_thumbs ||
+      nextProps.custom_thumbs !== this.props.custom_thumbs ||
+      nextProps.custom_lists !== this.props.custom_lists ||
       nextProps.use_arrow !== this.props.use_arrow ||
       nextProps.options.thumbsPerPage !== this.props.options.thumbsPerPage ||
       nextState.actionID !== this.state.actionID ||
@@ -144,20 +149,57 @@ class Carousel extends Component {
   }
 
   _renderList(carousel_list_style) {
+    const {
+      custom_lists
+    } = this.props
     const _use_lazy_load = this.props.lazy_load
-    return this.props.urls.map((url, idx) => {
-      return <List
-        width={ Math.ceil(this.props.options.listWidth) }
-        height={ this.state.options.listHeight }
-        carousel_list_style={ carousel_list_style }
-        key={ `cm-carousel-list-${url}-${idx}` }
-        idx={ idx }
-        url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
-    })
+
+    if (!custom_lists) {
+      return this.props.urls.map((url, idx) => {
+        return <List
+          width={ Math.ceil(this.props.options.listWidth) }
+          height={ this.state.options.listHeight }
+          carousel_list_style={ carousel_list_style }
+          key={ `cm-carousel-list-${url}-${idx}` }
+          idx={ idx }
+          url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
+      })
+    }
+    if (custom_lists) {
+      const reactElement = isReactElement(custom_lists)
+      const functionElement = isFunction(custom_lists)
+      if (reactElement) {
+        return (
+          React.createElement(custom_lists, {
+            setting: {
+              urls: this.props.urls,
+              width: Math.ceil(this.props.options.listWidth),
+              height: this.state.options.listHeight
+            }
+          })
+        )
+      }
+      if (functionElement) {
+        return (
+          React.cloneElement(this.props.custom_lists(
+            {
+              urls: this.props.urls,
+              width: Math.ceil(this.props.options.listWidth),
+              height: this.state.options.listHeight
+            }
+          ))
+        )
+      }
+      throw new Error('custom thumbs must be react component or function.')
+    }
   }
 
   _render_thumbs(thumbs_style, thumbs_item_style) {
-    if (this.props.use_thumbs) {
+    const {
+      custom_thumbs
+    } = this.props
+
+    if (this.props.use_thumbs && !custom_thumbs) {
       return (
         <Thumbs
           thumbsPerPage={ this.props.options.thumbsPerPage }
@@ -168,6 +210,31 @@ class Carousel extends Component {
           urls={ this.props.urls }
           handleChangeThumbsID={ this._handleChangeThumbsID.bind(this) } />
       )
+    }
+    if (custom_thumbs) {
+      const reactElement = isReactElement(custom_thumbs)
+      const functionElement = isFunction(custom_thumbs)
+      if (reactElement) {
+        return React.createElement(custom_thumbs, {
+          setting: {
+            actionID: this.state.actionID,
+            urls: this.props.urls
+          },
+          handler: {
+            handleChangeThumbsID: this._handleChangeThumbsID.bind(this)
+          }
+        })
+      }
+      if (functionElement) {
+        return custom_thumbs(
+          {
+            actionID: this.state.actionID,
+            urls: this.props.urls
+          },
+          { handleChangeThumbsID: this._handleChangeThumbsID.bind(this) }
+        )
+      }
+      throw new Error('custom thumbs must be react component or function.')
     }
   }
 
@@ -194,7 +261,8 @@ class Carousel extends Component {
 
   render() {
     const {
-      custom_styles
+      custom_styles,
+      custom_thumbs
     } = this.props
     const _wrapper_style = {
       width: Math.ceil(this.props.options.listWidth),
@@ -240,6 +308,9 @@ Carousel.propTypes = {
 
   custom_styles: PropTypes.object,
   styleEase: PropTypes.string,
+
+  custom_thumbs: PropTypes.func,
+  custom_lists: PropTypes.func,
 
   use_left_arrow: PropTypes.element,
   use_right_arrow: PropTypes.element,
