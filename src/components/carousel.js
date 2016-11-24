@@ -309,6 +309,9 @@ Carousel.propTypes = {
   custom_styles: PropTypes.object,
   styleEase: PropTypes.string,
 
+  custom_thumbs: PropTypes.func,
+  custom_lists: PropTypes.func,
+
   use_left_arrow: PropTypes.element,
   use_right_arrow: PropTypes.element,
 
