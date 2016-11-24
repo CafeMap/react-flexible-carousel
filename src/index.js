@@ -1,1 +1,6 @@
-export Carousel from './components/carousel.js'
+import Carousel from './components/carousel'
+
+export default Carousel
+export {
+  Carousel
+}

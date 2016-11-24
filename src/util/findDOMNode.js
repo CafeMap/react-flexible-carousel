@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint react/no-find-dom-node: 0 */
 import ReactDom from 'react-dom'
 
 function _getDOM(react_node) {

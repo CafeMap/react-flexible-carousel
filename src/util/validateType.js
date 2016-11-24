@@ -1,10 +1,6 @@
 import React from 'react'
 
-function _type_error(name, type, error_item) {
-  throw new Error(`${name} seems ${error_item} typeof ${typeof error_item} didn't typeof ${type}`)
-}
-
-function isReactElement(element, callback_name) {
+function isReactElement(element) {
   if (typeof element === 'function') {
     return typeof element.prototype.render === 'function'
   }
@@ -12,12 +8,16 @@ function isReactElement(element, callback_name) {
   if (React.isValidElement(element)) {
     return true
   }
+
+  return false
 }
 
-function isFunction(fn, callback_name) {
+function isFunction(fn) {
   if (typeof fn === 'function') {
     return true
   }
+
+  return false
 }
 
 export {
