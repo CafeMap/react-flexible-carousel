@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import ReactDom from 'react-dom'
 import { Carousel } from '../lib/index.js'
 
+import CustomThumbs from './components/customThumbs.react'
+import CustomList from './components/customList.react'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -23,6 +26,8 @@ class App extends Component {
       auto_play: false,
       use_arrow: false,
       use_thumbs: true,
+      use_custom_thumbs: false,
+      use_custom_lists: false,
       lazy_load: false,
       thumbsPerPage: 3,
       after_action_id: 0,
@@ -55,10 +60,10 @@ class App extends Component {
           touch_mode={ true }
           lazy_load={ true }
           custom_styles={{
-            wrapper: {
-              backgroundColor: '#ccc'
-            }
+            thumbs: { paddingTop: 10 }
           }}
+          custom_thumbs={ this.state.use_custom_thumbs ? CustomThumbs : undefined }
+          custom_lists={ this.state.use_custom_lists ? CustomList : undefined }
           styleEase='ease-in-out'
           use_left_arrow={
             <div>
@@ -95,6 +100,18 @@ class App extends Component {
               type='checkbox'
               defaultChecked={ this.state.use_thumbs }
               onChange={ () => this.setState({ use_thumbs: !this.state.use_thumbs }) }/> Use Thumbs
+          </div>
+          <div>
+            <input
+              type='checkbox'
+              defaultChecked={ this.state.use_custom_thumbs }
+              onChange={ () => this.setState({ use_custom_thumbs: !this.state.use_custom_thumbs }) }/> Use Custom Thumbs
+          </div>
+          <div>
+            <input
+              type='checkbox'
+              defaultChecked={ this.state.use_custom_lists }
+              onChange={ () => this.setState({ use_custom_lists: !this.state.use_custom_lists }) }/> Use Custom Lists
           </div>
           <div>
             <input

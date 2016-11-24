@@ -29,6 +29,7 @@ class Thumbs extends Component {
     const thumbs_wrapper_style = Object.assign({
       width: this.props.listWidth,
       overflow: 'hidden',
+<<<<<<< HEAD
       backgroundColor: 'white',
       borderRadius: '0px 0px 3px 3px'
     }, this.props.thumbs_style)
@@ -36,6 +37,18 @@ class Thumbs extends Component {
       width: _wrapper_width,
       transition: 'transform .3s',
       transform: this.props.actionID > (thumbs_per_page - 2) ? `translateX(-${Math.ceil(parseInt(this.props.listWidth / thumbs_per_page, 10) * (this.props.actionID - (thumbs_per_page - 2)))}px)` : `translateX(0px)`
+=======
+      borderRadius: '0px 0px 3px 3px'
+    }, this.props.thumbs_style)
+    const _half_per_page = thumbs_per_page > 2 ? (thumbs_per_page / 2) : Math.floor(thumbs_per_page / 2)
+    const thumbs_item_style = {
+      width: _wrapper_width,
+      transition: 'transform .3s',
+      transform: this.props.actionID >= (_half_per_page) ?
+        `translateX(-${Math.ceil(parseInt(this.props.listWidth / thumbs_per_page, 10) * (thumbs_per_page % 2 === 0 ? (this.props.actionID - _half_per_page) + 0.52 :
+          Math.ceil( (this.props.actionID - _half_per_page) )))}px)` :
+          `translateX(0px)`
+>>>>>>> master
     }
     return (
       <div

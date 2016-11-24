@@ -2,6 +2,10 @@
   "presets": [
     ["latest", {
       "es2015": { "loose": true }
-    }],
-    "stage-0", "react"]
+    }], "react"],
+  "plugins": [
+    ["transform-runtime",{ "polyfill": true, "regenerator": true }],
+    "transform-function-bind",
+    "transform-export-extensions"
+  ]
 }
