@@ -18,7 +18,7 @@
     }
   },
   "rules": {
-    "camelcase": 1,
+    "camelcase": 0,
     "react/jsx-filename-extension": 0,
     "react/jsx-curly-spacing": [2, "always"],
     "react/jsx-no-duplicate-props": 2,
