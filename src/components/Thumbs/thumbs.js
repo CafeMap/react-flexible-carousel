@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import ThumbsItem from './thumbs-item'
 
 class Thumbs extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   _render_thumbs_items(thumbs_item_style) {
     const thumbs_per_page = this.props.thumbsPerPage || 5
     return this.props.urls.map((url, idx) => {
@@ -37,8 +33,8 @@ class Thumbs extends Component {
       transition: 'transform .3s',
       transform: this.props.actionID >= (_half_per_page) ?
         `translateX(-${Math.ceil(parseInt(this.props.listWidth / thumbs_per_page, 10) * (thumbs_per_page % 2 === 0 ? (this.props.actionID - _half_per_page) + 0.52 :
-          Math.ceil( (this.props.actionID - _half_per_page) )))}px)` :
-          `translateX(0px)`
+          Math.ceil((this.props.actionID - _half_per_page))))}px)` :
+          'translateX(0px)'
     }
     return (
       <div

@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { getDOMWidth } from '../util/findDOMNode'
 import {
   isFunction,
   isReactElement
@@ -155,15 +154,15 @@ class Carousel extends Component {
     const _use_lazy_load = this.props.lazy_load
 
     if (!custom_lists) {
-      return this.props.urls.map((url, idx) => {
-        return <List
+      return this.props.urls.map((url, idx) =>
+        <List
           width={ Math.ceil(this.props.options.listWidth) }
           height={ this.state.options.listHeight }
           carousel_list_style={ carousel_list_style }
           key={ `cm-carousel-list-${url}-${idx}` }
           idx={ idx }
-          url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } />
-      })
+          url={ _use_lazy_load ? (idx === (this.state.actionID - 1) || idx === (this.state.actionID + 1) || idx === (this.state.actionID) ? url : '') : url } /> /* eslint no-nested-ternary: 0 */
+      )
     }
     if (custom_lists) {
       const reactElement = isReactElement(custom_lists)
@@ -192,6 +191,7 @@ class Carousel extends Component {
       }
       throw new Error('custom thumbs must be react component or function.')
     }
+    return false
   }
 
   _render_thumbs(thumbs_style, thumbs_item_style) {
@@ -236,6 +236,7 @@ class Carousel extends Component {
       }
       throw new Error('custom thumbs must be react component or function.')
     }
+    return false
   }
 
   _render_arrow() {
@@ -243,13 +244,13 @@ class Carousel extends Component {
       return (
         [
           <ArrowLeft
-            key={ `arrow-left` }
+            key={ 'arrow-left' }
             wrapperIsHover={ this.state.wrapperIsHover }
             handleArrowLeft={ this._handleArrowLeft.bind(this) }
             useLeftArrow={ this.props.use_left_arrow }
             wrapperHeight={ this.props.options.listHeight } />,
           <ArrowRight
-            key={ `arrow-right` }
+            key={ 'arrow-right' }
             wrapperIsHover={ this.state.wrapperIsHover }
             handleArrowRight={ this._handleArrowRight.bind(this) }
             useRightArrow={ this.props.use_right_arrow }
@@ -257,12 +258,12 @@ class Carousel extends Component {
         ]
       )
     }
+    return false
   }
 
   render() {
     const {
-      custom_styles,
-      custom_thumbs
+      custom_styles
     } = this.props
     const _wrapper_style = {
       width: Math.ceil(this.props.options.listWidth),
@@ -277,7 +278,7 @@ class Carousel extends Component {
       <div
         style={ _wrapper_style }>
         <Wrapper
-          ref={ node => this.wrapper = node }
+          ref={ node => this.wrapper = node } /* eslint no-return-assign: 0 */
           listWidth={ Math.ceil(this.props.options.listWidth) }
           listHeight={ this.state.options.listHeight }
           actionID={ this.state.actionID }
@@ -296,6 +297,7 @@ class Carousel extends Component {
   }
 }
 
+/* eslint react/forbid-prop-types: 0  */
 Carousel.propTypes = {
   urls: PropTypes.array.isRequired,
   options: PropTypes.object,

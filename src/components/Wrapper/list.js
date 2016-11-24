@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 
-class List extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class List extends Component { /* eslint react/prefer-stateless-function: 0 */
   render() {
     const _list_style = Object.assign({
       width: this.props.width,
@@ -16,7 +12,7 @@ class List extends Component {
       backgroundSize: 'contain'
     }, this.props.carousel_list_style)
     return (
-      <div style={ _list_style }></div>
+      <div style={ _list_style }>{null}</div>
     )
   }
 }
