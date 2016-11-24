@@ -10,7 +10,7 @@
 > npm install react-flexible-carousel --save
 ```
 
-# USE - v1.1.2
+# USE - v1.2.0
 
 ```javascript
 import { Carousel } from 'react-flexible-carousel'
@@ -50,13 +50,13 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 
 # PROGRESS
 
-- [ ] handle wrapper
+- [x] handle wrapper
   - [x] custom wrapper style
 - [x] handle list slider
   - [x] handle list auto play
-  - [ ] handle custom image
+  - [x] handle custom image
     - [x] use image url data
-    - [ ] use custom component
+    - [x] use custom component
 - [x] handle thumbs
   - [ ] custom thumbs position
     - [ ] top
@@ -73,7 +73,6 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 - [x] handle respond design
   - [x] with parent element
 - [x] handle touch mode
-- [ ] handle fancy box show ( click list image and show the bigger one )
 - [ ] handle hook event
   - [ ] handle before, after bind event
     - [x] handle wrapper mouse over, leave event
@@ -81,6 +80,7 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
     - [x] handle actionID change
     - [ ] handle thumbs item click
     - [ ] ~~handle thumbs item change~~
+- [ ] handle fancy box show ( click list image and show the bigger one )
 
 # Props
 
@@ -97,6 +97,8 @@ const urls = ['http://placehold.it/350x150', 'http://placehold.it/350x200', 'htt
 |lazy_load|boolean||true|Done|
 |styleEase|string|use css3 ease style e.g. "ease-in-out", "ease-in" etc..|ease-out|Done|
 |custom_styles|object|custom styles for carousel component. e.g. "wrapper", "list", "thumbs", "thumbs_item"||Done|
+|custom_thumbs({ setting, handler })|ReactElement|[see example](https://github.com/CafeMap/react-flexible-carousel/tree/master/examples/components)||Done|
+|custom_lists({ urls, width, height })|ReactElement|[see example](https://github.com/CafeMap/react-flexible-carousel/tree/master/examples/components)||Done|
 |options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
 |start_actionID|int||0|Done|
 
