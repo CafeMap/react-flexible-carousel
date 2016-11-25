@@ -27,7 +27,9 @@ class Wrapper extends Component {
 
   _handleTouchEnd() {
     const _correctX = this.state.start_x - this.state.move_x
-    this.props.handleTouchChangeActionID(_correctX)
+    if (_correctX !== 0) {
+      this.props.handleTouchChangeActionID(_correctX)
+    }
     this.setState({
       start_x: 0,
       move_x: 0,
