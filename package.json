@@ -52,5 +52,7 @@
     "webpack": "beta",
     "webpack-fatigue-embrace": "^1.0.3"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
+  }
 }
