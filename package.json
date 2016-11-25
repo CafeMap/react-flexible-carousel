@@ -13,8 +13,9 @@
     "url": "https://github.com/CafeMap/react-flexible-carousel.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint ./src",
+    "test": "lint && jest",
+    "jest": "jest",
+    "lint": "eslint ./src",
     "build": "npm run build-cjs && npm run build-es",
     "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./src -d lib",
     "build-es": "rimraf es && cross-env BABEL_ENV=es babel ./src -d es",
@@ -29,6 +30,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.18.2",
+    "babel-jest": "^17.0.2",
     "babel-loader": "^6.2.7",
     "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-plugin-transform-function-bind": "^6.8.0",
@@ -41,6 +43,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
+    "jest": "^17.0.3",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "rimraf": "^2.5.4",
