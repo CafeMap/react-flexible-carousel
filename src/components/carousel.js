@@ -113,13 +113,19 @@ class Carousel extends Component {
   }
 
   _handleArrowLeft() {
-    if (this.state.actionID - 1 < 0) return
-    this._handleChangeThumbsID(this.state.actionID - 1)
+    if (this.state.actionID - 1 < 0) {
+      this._handleChangeThumbsID(this.props.urls.length - 1)
+    } else {
+      this._handleChangeThumbsID(this.state.actionID - 1)
+    }
   }
 
   _handleArrowRight() {
-    if (this.state.actionID + 1 >= this.props.urls.length) return
-    this._handleChangeThumbsID(this.state.actionID + 1)
+    if (this.state.actionID + 1 >= this.props.urls.length) {
+      this._handleChangeThumbsID(0)
+    } else {
+      this._handleChangeThumbsID(this.state.actionID + 1)
+    }
   }
 
   _handleTouchChangeActionID(correctX) {
