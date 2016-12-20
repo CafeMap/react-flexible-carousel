@@ -27,7 +27,7 @@
     "carousel"
   ],
   "author": "Whien_Liou <sal95610@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-jest": "^17.0.2",
