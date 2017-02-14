@@ -15,12 +15,14 @@ class Carousel extends Component {
     super(props);
 
     this.state = {
-      options: {
-        listWidth: Math.ceil(props.options.listWidth) || 300,
-        listHeight: props.options.listHeight || 400
-      },
+      // options: {
+      //   listWidth: props.options ? Math.ceil(props.options.listWidth) : 300,
+      //   listHeight: props.options ? props.options.listHeight : 400
+      // },
+      listWidth: this.props.listWidth || 300,
+      listHeight: this.props.listHeight || 400,
       wrapperIsHover: false,
-      actionID: this.props.options.start_actionID || 0
+      actionID: props.options ? this.props.options.start_actionID : 0
     }
   }
 
@@ -41,10 +43,10 @@ class Carousel extends Component {
       nextProps.custom_thumbs !== this.props.custom_thumbs ||
       nextProps.custom_lists !== this.props.custom_lists ||
       nextProps.use_arrow !== this.props.use_arrow ||
-      nextProps.options.thumbsPerPage !== this.props.options.thumbsPerPage ||
+      nextProps.thumbsPerPage !== this.props.thumbsPerPage ||
       nextState.actionID !== this.state.actionID ||
       nextState.wrapperIsHover !== this.state.wrapperIsHover ||
-      nextProps.options.listWidth !== this.props.options.listWidth
+      nextState.listWidth !== this.state.listWidth
   }
 
   _handleAutoPlay() {
@@ -72,7 +74,7 @@ class Carousel extends Component {
   }
 
   _handleBindAutoPlayTimer() {
-    const auto_play_speed = this.props.options.auto_play_speed ? this.props.options.auto_play_speed : 1000
+    const auto_play_speed = this.props.auto_play_speed || 1000
     this.timer = setInterval(this._handleAutoPlay.bind(this), auto_play_speed)
   }
 
@@ -162,8 +164,8 @@ class Carousel extends Component {
     if (!custom_lists) {
       return this.props.urls.map((url, idx) =>
         <List
-          width={ Math.ceil(this.props.options.listWidth) }
-          height={ this.state.options.listHeight }
+          width={ Math.ceil(this.state.listWidth) }
+          height={ this.state.listHeight }
           carousel_list_style={ carousel_list_style }
           key={ `cm-carousel-list-${url}-${idx}` }
           idx={ idx }
@@ -178,8 +180,8 @@ class Carousel extends Component {
           React.createElement(custom_lists, {
             setting: {
               urls: this.props.urls,
-              width: Math.ceil(this.props.options.listWidth),
-              height: this.state.options.listHeight
+              width: Math.ceil(this.state.listWidth),
+              height: this.state.listHeight
             }
           })
         )
@@ -189,8 +191,8 @@ class Carousel extends Component {
           React.cloneElement(this.props.custom_lists(
             {
               urls: this.props.urls,
-              width: Math.ceil(this.props.options.listWidth),
-              height: this.state.options.listHeight
+              width: Math.ceil(this.state.listWidth),
+              height: this.state.listHeight
             }
           ))
         )
@@ -208,11 +210,11 @@ class Carousel extends Component {
     if (this.props.use_thumbs && !custom_thumbs) {
       return (
         <Thumbs
-          thumbsPerPage={ this.props.options.thumbsPerPage }
+          thumbsPerPage={ this.props.thumbsPerPage || 5 }
           thumbs_style={ thumbs_style }
           thumbs_item_style={ thumbs_item_style }
           actionID={ this.state.actionID }
-          listWidth={ Math.ceil(this.props.options.listWidth) }
+          listWidth={ Math.ceil(this.state.listWidth) }
           urls={ this.props.urls }
           handleChangeThumbsID={ this._handleChangeThumbsID.bind(this) } />
       )
@@ -254,13 +256,13 @@ class Carousel extends Component {
             wrapperIsHover={ this.state.wrapperIsHover }
             handleArrowLeft={ this._handleArrowLeft.bind(this) }
             useLeftArrow={ this.props.use_left_arrow }
-            wrapperHeight={ this.props.options.listHeight } />,
+            wrapperHeight={ this.state.listHeight } />,
           <ArrowRight
             key={ 'arrow-right' }
             wrapperIsHover={ this.state.wrapperIsHover }
             handleArrowRight={ this._handleArrowRight.bind(this) }
             useRightArrow={ this.props.use_right_arrow }
-            wrapperHeight={ this.props.options.listHeight } />
+            wrapperHeight={ this.state.listHeight } />
         ]
       )
     }
@@ -272,7 +274,7 @@ class Carousel extends Component {
       custom_styles
     } = this.props
     const _wrapper_style = {
-      width: Math.ceil(this.props.options.listWidth),
+      width: Math.ceil(this.state.listWidth),
       position: 'relative'
     }
     const _carousel_wrapper_style = Object.assign({}, custom_styles ? custom_styles.wrapper : {})
@@ -285,8 +287,8 @@ class Carousel extends Component {
         style={ _wrapper_style }>
         <Wrapper
           ref={ node => this.wrapper = node } /* eslint no-return-assign: 0 */
-          listWidth={ Math.ceil(this.props.options.listWidth) }
-          listHeight={ this.state.options.listHeight }
+          listWidth={ Math.ceil(this.state.listWidth) }
+          listHeight={ this.state.listHeight }
           actionID={ this.state.actionID }
           carouse_wrapper_style={ _carousel_wrapper_style }
           styleEase={ this.props.styleEase }
