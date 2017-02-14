@@ -78,8 +78,11 @@ export default SimpleExample
 
 |    Property    | Type |          Description          | Default | Done |
 | -------------  | ---- |          -----------          | ------- | ---- |
-|urls|array|An array of urls||Done|
+|urls (required)|array|An array of urls|null|Done|
+|listWidth|int|carousel image width size|300|Done|
+|listHeight|int|carousel image height size|400|Done|
 |auto_play|boolean||false|Done|
+|auto_play_speed|int|speed setting for auto play|1000|Done|
 |use_arrow|boolean||false|Done|
 |use_left_arrow|ReactElement|custom left arrow ReactElement|null|Done|
 |use_right_arrow|ReactElement|custom right arrow ReactElement|null|Done|
@@ -91,7 +94,6 @@ export default SimpleExample
 |custom_styles|object|custom styles for carousel component. e.g. "wrapper", "list", "thumbs", "thumbs_item"||Done|
 |custom_thumbs({ setting, handler })|ReactElement|[see example](https://github.com/CafeMap/react-flexible-carousel/tree/master/examples/components)||Done|
 |custom_lists({ urls, width, height })|ReactElement|[see example](https://github.com/CafeMap/react-flexible-carousel/tree/master/examples/components)||Done|
-|options|object|{ listWidth:200, listHeight: 200, auto_play_speed: 2000 }||Done|
 |start_actionID|int||0|Done|
 
 # Events
