@@ -56,5 +56,8 @@
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"
+  },
+  "dependencies": {
+    "eslint": "^3.10.2"
   }
 }

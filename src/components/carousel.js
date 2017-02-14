@@ -250,20 +250,20 @@ class Carousel extends Component {
   _render_arrow() {
     if (this.props.use_arrow) {
       return (
-        [
-          <ArrowLeft
-            key={ 'arrow-left' }
-            wrapperIsHover={ this.state.wrapperIsHover }
-            handleArrowLeft={ this._handleArrowLeft.bind(this) }
-            useLeftArrow={ this.props.use_left_arrow }
-            wrapperHeight={ this.state.listHeight } />,
-          <ArrowRight
-            key={ 'arrow-right' }
-            wrapperIsHover={ this.state.wrapperIsHover }
-            handleArrowRight={ this._handleArrowRight.bind(this) }
-            useRightArrow={ this.props.use_right_arrow }
-            wrapperHeight={ this.state.listHeight } />
-        ]
+      [
+        <ArrowLeft
+          key={ 'arrow-left' }
+          wrapperIsHover={ this.state.wrapperIsHover }
+          handleArrowLeft={ this._handleArrowLeft.bind(this) }
+          useLeftArrow={ this.props.use_left_arrow }
+          wrapperHeight={ this.state.listHeight } />,
+        <ArrowRight
+          key={ 'arrow-right' }
+          wrapperIsHover={ this.state.wrapperIsHover }
+          handleArrowRight={ this._handleArrowRight.bind(this) }
+          useRightArrow={ this.props.use_right_arrow }
+          wrapperHeight={ this.state.listHeight } />
+      ]
       )
     }
     return false
