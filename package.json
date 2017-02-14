@@ -1,11 +1,13 @@
 {
   "name": "react-flexible-carousel",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "react flexible carousel let you can easily control with style, rwd, lifecycle and dynamic path.",
   "files": [
     "es",
     "lib",
-    "umd"
+    "umd",
+    "README.md",
+    "LICENSE"
   ],
   "main": "lib/index.js",
   "repository": {
