@@ -1,6 +1,32 @@
 # React Flexible Carousel
 ⭐️  Flexible image carousel and respond on any device 💻  🖥  👀￼￼￼￼￼
 
+# Simple Example
+
+```javascript
+import React, { Component } from 'react'
+import { Carousel } from 'react-flexible-carousel'
+class SimpleExample extends Component {
+  render() {
+    const urls = [
+      'http://images.freeimages.com/images/previews/a6c/window-7-1547198.jpg',
+      'http://images.freeimages.com/images/previews/5f7/hunter-s-bend-1316926.jpg',
+      'http://images.freeimages.com/images/previews/423/burger-1320282.jpg',
+      'http://images.freeimages.com/images/previews/f44/strawberry-cake-2-1323179.jpg',
+      'http://images.freeimages.com/images/previews/5b0/rubik-s-cube-1-1424892.jpg',
+    ]
+    return (
+      <Carousel
+        urls={ urls }
+        use_thumbs={ true }
+        listHeight={ 200 }
+      />
+    )
+  }  
+}
+export default SimpleExample
+```
+
 # Example page
 [Demo Page](https://cafemap.github.io/react-flexible-carousel/)
 
