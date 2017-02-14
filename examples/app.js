@@ -5,6 +5,8 @@ import { Carousel } from '../lib/index.js'
 import CustomThumbs from './components/customThumbs.react'
 import CustomList from './components/customList.react'
 
+import SimpleExample from './simple_example'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -52,6 +54,7 @@ class App extends Component {
     }
     return (
       <div style={ example_wrapper_style }>
+        <h1 style={{ textAlign: 'center' }}>Complex example</h1>
         <Carousel
           urls={ this.state.urls }
           use_arrow={ this.state.use_arrow }
@@ -75,12 +78,10 @@ class App extends Component {
               <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA9ElEQVRoQ+3XSwrCQBgE4c7J1JOrN5NZC/FBV/0GnLWG+bqyyZaDn+3g988fMF2wUeCW5LQDuSRZv0FOA3BOct253br8QiCnAVgXG6vQAoxVaAHGKjQBIxWagJEKbYBeoQ3QKxAAtQIBUCtQAK0CBdAqkAClAglQKtAAvAINwCsYALSCAUArWACswq8A7kkW8uNjAbBPTgPw6vX5ev2VywBg6xsAdH0DgK5PA/D1aQC+PglQ1icByvoUQFufAmjrEwB1fQKgrt8G6Ou3Afr6TcDI+k3AyPotwNj6LcDY+i3Ax9+xzT8YX2TN+z496w9A533j4Q8TJ1AxjLrO4wAAAABJRU5ErkJggg==" width="48" height="48" />
             </div>
           }
-          options={ {
-            listWidth: document.body.offsetWidth,
-            listHeight: 300,
-            thumbsPerPage: this.state.thumbsPerPage,
-            start_actionID: 0
-          } }
+          listWidth={ document.body.offsetWidth }
+          listHeight={ 300 }
+          thumbsPerPage={ this.state.thumbsPerPage }
+          start_actionID={ 0 }
           beforeWrapperMouseOver={ (index, url) => console.log('beforeWrapperMouseOver >', index, url) }
           afterWrapperMouseOver={ (index, url) => console.log('afterWrapperMouseOver >', index, url) }
           beforeWrapperMouseLeave={ (index, url) => console.log('beforeWrapperMouseLeave >', index, url) }
@@ -143,4 +144,9 @@ class App extends Component {
   }
 }
 
-ReactDom.render(<App />, document.getElementById('example-view'))
+ReactDom.render(
+  <div>
+    <SimpleExample />
+    <App />
+  </div>
+, document.getElementById('example-view'))
